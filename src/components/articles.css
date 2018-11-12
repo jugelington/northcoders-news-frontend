@@ -1,0 +1,66 @@
+main {
+  background-color: rgba(128, 255, 0, 0.25);
+  border: rgb(128, 255, 0) 1px solid;
+  grid-area: main;
+}
+
+#article {
+  background-color: rgba(128, 128, 128, 0.25);
+  border: grey 1px solid;
+  border-radius: 40px;
+  width: 75%;
+  margin: 10px auto;
+  display: grid;
+  grid-template:
+    [header-left] 'title title title' 50px [header-right]
+    [main-left] 'votes  body user' 1fr [main-right]
+    [footer-left] 'foot  foot user' 30px [footer-right]
+    / 120px 1fr;
+}
+
+#title {
+  grid-area: title;
+  border: blue 1px solid;
+  margin: 0 auto;
+  font-size: 25px;
+}
+#body {
+  grid-area: body;
+  width: 90%;
+  margin: 0 auto;
+}
+
+#foot {
+  grid-area: foot;
+  margin: 5px auto;
+  border: black 1px solid;
+}
+
+#votes {
+  grid-area: votes;
+  background-color: rgba(128, 128, 128, 0.25);
+  border: 1px solid black;
+  margin: 0 auto;
+  height: 100px;
+  width: 100px;
+  border-radius: 100px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+#votes h2 {
+  margin: 0 auto;
+}
+
+#user {
+  grid-area: user;
+  padding: 20px;
+  margin: 0 auto;
+  font-size: 13px;
+}
+.avatar {
+  height: 60px;
+  width: 60px;
+  border-radius: 100px;
+  border: 1px solid black;
+}
