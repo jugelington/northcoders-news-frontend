@@ -61,12 +61,13 @@ h1 {
 
 .article-user {
   grid-area: user;
-  padding-right: 20px;
   margin: 0 auto;
   font-size: 13px;
   text-align: right;
+  margin-right: 20px;
 }
 .avatar {
+  margin-right: 10px;
   height: 50px;
   width: 50px;
   border-radius: 100px;

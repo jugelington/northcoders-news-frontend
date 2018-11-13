@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as api from '../api';
+import './comments.css';
 
 class CommentForm extends Component {
   state = {
@@ -14,7 +15,8 @@ class CommentForm extends Component {
           Tell the world what you think, {this.props.user}!
         </label>
         <br />
-        <input id="comment" type="text" onChange={this.handleChange} />
+        <textarea id="comment" onChange={this.handleChange} />
+        <br />
         <button>Comment!</button>
       </form>
     );
