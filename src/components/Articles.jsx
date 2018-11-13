@@ -12,7 +12,7 @@ class Articles extends Component {
 
   render() {
     return (
-      <main>
+      <main id="articles-container">
         <h1>
           {this.props.topic_slug
             ? `Articles on ${this.props.topic_slug}`
@@ -20,18 +20,20 @@ class Articles extends Component {
         </h1>
         {this.state.loading === false ? (
           this.state.articles.map(article => (
-            <Link className="links" to={`/articles/${article._id}`}>
-              <div key={article._id} className="article">
+            <Link
+              key={article._id}
+              className="links"
+              to={`/articles/${article._id}`}
+            >
+              <div className="article">
                 <h3 className="article-title">{article.title}</h3>
                 <p className="article-body">{article.body}</p>
                 <p className="article-foot">
                   On: {moment(article.created_at).format('MMMM DD YYYY')}{' '}
-                  Comments: {article.comment_count}
+                  Comments: {article.comment_count || 0}
                 </p>
                 <div className="article-votes">
-                  Up
                   <h2>{article.votes}</h2>
-                  Down
                 </div>
                 <div className="article-user">
                   <img
@@ -52,7 +54,7 @@ class Articles extends Component {
     );
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (this.props.topic_slug !== prevProps.topic_slug) {
       this.getArticles();
     }

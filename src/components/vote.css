@@ -1,0 +1,15 @@
+.vote {
+  height: 50px;
+  width: 50px;
+  margin: 0 auto;
+  background: none;
+  border: none;
+}
+
+.vote img {
+  height: 45px;
+  width: 45px;
+  margin: 0 auto;
+  background: none;
+  border: none;
+}

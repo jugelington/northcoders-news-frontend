@@ -1,7 +1,11 @@
 .App {
   text-align: center;
-  display: grid;
-  grid-template: 1fr 1fr 4fr 1fr / 1fr;
-  grid-template-areas: 'header' 'nav' 'main' 'footer';
   height: 100vh;
+  display: grid;
+  grid-template:
+    'header header header' 100px
+    'nav nav nav' 100px
+    'login login login' 50px
+    'main  main main' 4fr
+    'footer  footer footer' 30px / 1fr;
 }

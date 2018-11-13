@@ -1,28 +1,57 @@
 import React, { Component } from 'react';
 import * as api from '../api';
+import moment from 'moment';
 import './articlepage.css';
+import Comments from './Comments';
+import Vote from './Vote';
 
 class ArticlePage extends Component {
   state = {
     article: {},
-    loading: true
+    loading: true,
+    voted: false
   };
   render() {
     const { article } = this.state;
     return (
       <main>
         {this.state.loading === false ? (
-          <>
-            <h2>{article.title}</h2>
-            <p>{article.created_by.name}</p>
-            <img src={article.created_by.avatar_url} alt="avatar" />
-            <p>{article.body}</p>
-          </>
+          <div key={article._id} className="article">
+            <h1 className="article-title">{article.title}</h1>
+            <p className="article-body">{article.body}</p>
+            <p className="article-foot">
+              On: {moment(article.created_at).format('MMMM DD YYYY')}
+            </p>
+            <Vote
+              votes={article.votes}
+              article_id={article._id}
+              voted={this.state.voted}
+              toggleVoted={this.toggleVoted}
+            />
+            <div className="article-user">
+              <img
+                className="avatar"
+                src={article.created_by.avatar_url}
+                alt="avatar"
+              />
+              <br />
+              {article.created_by.username}
+            </div>
+          </div>
         ) : (
           <p>Article Loading...</p>
         )}
+        {this.state.loading === false ? (
+          <Comments article={article._id} />
+        ) : (
+          <p>Comments Loading...</p>
+        )}
       </main>
     );
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.voted !== this.state.voted) this.getArticle();
   }
 
   componentDidMount() {
@@ -33,6 +62,10 @@ class ArticlePage extends Component {
     api.fetchArticleById(this.props.article_id).then(article => {
       this.setState({ article, loading: false });
     });
+  };
+
+  toggleVoted = () => {
+    this.setState({ voted: true });
   };
 }
 
