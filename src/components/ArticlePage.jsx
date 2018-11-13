@@ -16,7 +16,7 @@ class ArticlePage extends Component {
     return (
       <main>
         {this.state.loading === false ? (
-          <div key={article._id} className="article">
+          <div key={article._id} id="articlebox">
             <h1 className="article-title">{article.title}</h1>
             <p className="article-body">{article.body}</p>
             <p className="article-foot">

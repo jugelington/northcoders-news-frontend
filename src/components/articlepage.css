@@ -6,7 +6,15 @@ main {
 }
 
 #articlebox {
-  background-color: rgba(128, 128, 128, 0.25);
+  background-color: rgba(0, 0, 255, 0.25);
+  height: fit-content;
   border-radius: 40px;
   width: 75%;
+  margin: 10px auto;
+  display: grid;
+  grid-template:
+    [header-left] 'title title title' 40px [header-right]
+    [main-left] 'votes  body user' 1fr [main-right]
+    [footer-left] 'foot  foot foot' 30px [footer-right]
+    / 120px 1fr;
 }

@@ -10,16 +10,28 @@ const Nav = () => {
   return (
     <nav>
       <Link to="/">
-        <img src={home} alt="home" />
+        <figure className="nav-buttons">
+          <figcaption>Home</figcaption>
+          <img src={home} alt="home" />
+        </figure>
       </Link>
       <Link to="/topics/football">
-        <img src={football} alt="football" />
+        <figure className="nav-buttons">
+          <figcaption>Football</figcaption>
+          <img src={football} alt="football" />
+        </figure>
       </Link>
       <Link to="/topics/coding">
-        <img src={coding} alt="coding" />
+        <figure className="nav-buttons">
+          <figcaption>Coding</figcaption>
+          <img src={coding} alt="coding" />
+        </figure>
       </Link>
       <Link to="/topics/cooking">
-        <img src={cooking} alt="cooking" />
+        <figure className="nav-buttons">
+          <figcaption>Cooking</figcaption>
+          <img src={cooking} alt="cooking" />
+        </figure>
       </Link>
     </nav>
   );

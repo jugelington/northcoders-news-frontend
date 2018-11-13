@@ -20,32 +20,31 @@ class Articles extends Component {
         </h1>
         {this.state.loading === false ? (
           this.state.articles.map(article => (
-            <Link
-              key={article._id}
-              className="links"
-              to={`/articles/${article._id}`}
-            >
-              <div className="article">
-                <h3 className="article-title">{article.title}</h3>
-                <p className="article-body">{article.body}</p>
-                <p className="article-foot">
-                  On: {moment(article.created_at).format('MMMM DD YYYY')}{' '}
-                  Comments: {article.comment_count || 0}
-                </p>
-                <div className="article-votes">
-                  <h2>{article.votes}</h2>
-                </div>
-                <div className="article-user">
-                  <img
-                    className="avatar"
-                    src={article.created_by.avatar_url}
-                    alt="avatar"
-                  />
-                  <br />
-                  {article.created_by.username}
-                </div>
+            <div className="article" key={article._id}>
+              <h3 className="article-title">{article.title}</h3>
+              <p className="article-body">
+                {`${article.body.substring(0, 100)}[...]`}{' '}
+                <Link className="links" to={`/articles/${article._id}`}>
+                  Read More
+                </Link>
+              </p>
+              <p className="article-foot">
+                On: {moment(article.created_at).format('MMMM DD YYYY')}{' '}
+                Comments: {article.comment_count || 0}
+              </p>
+              <div className="article-votes">
+                <h2>{article.votes}</h2>
               </div>
-            </Link>
+              <div className="article-user">
+                <img
+                  className="avatar"
+                  src={article.created_by.avatar_url}
+                  alt="avatar"
+                />
+                <br />
+                By {article.created_by.username}
+              </div>
+            </div>
           ))
         ) : (
           <p>Loading...</p>
