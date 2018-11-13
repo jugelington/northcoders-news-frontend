@@ -3,3 +3,11 @@ nav {
   border: rgb(0, 0, 255) 1px solid;
   grid-area: nav;
 }
+
+img {
+  height: 150px;
+  border: 1px solid black;
+  border-radius: 100px;
+  margin-left: 40px;
+  margin-top: 5px;
+}

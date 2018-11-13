@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './articles.css';
 import moment from 'moment';
 import * as api from '../api';
+import { Link } from '@reach/router';
 
 class Articles extends Component {
   state = {
@@ -19,34 +20,42 @@ class Articles extends Component {
         </h1>
         {this.state.loading === false ? (
           this.state.articles.map(article => (
-            <div key={article._id} className="article">
-              <h3 className="article-title">{article.title}</h3>
-              <p className="article-body">{article.body}</p>
-              <p className="article-foot">
-                On: {moment(article.created_at).format('MMMM DD YYYY')}{' '}
-                Comments: {article.comment_count}
-              </p>
-              <div className="article-votes">
-                Up
-                <h2>{article.votes}</h2>
-                Down
+            <Link className="links" to={`/articles/${article._id}`}>
+              <div key={article._id} className="article">
+                <h3 className="article-title">{article.title}</h3>
+                <p className="article-body">{article.body}</p>
+                <p className="article-foot">
+                  On: {moment(article.created_at).format('MMMM DD YYYY')}{' '}
+                  Comments: {article.comment_count}
+                </p>
+                <div className="article-votes">
+                  Up
+                  <h2>{article.votes}</h2>
+                  Down
+                </div>
+                <div className="article-user">
+                  <img
+                    className="avatar"
+                    src={article.created_by.avatar_url}
+                    alt="avatar"
+                  />
+                  <br />
+                  {article.created_by.username}
+                </div>
               </div>
-              <div className="article-user">
-                <img
-                  className="avatar"
-                  src={article.created_by.avatar_url}
-                  alt="avatar"
-                />
-                <br />
-                {article.created_by.username}
-              </div>
-            </div>
+            </Link>
           ))
         ) : (
           <p>Loading...</p>
         )}
       </main>
     );
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.topic_slug !== prevProps.topic_slug) {
+      this.getArticles();
+    }
   }
 
   componentDidMount() {

@@ -67,3 +67,8 @@ main {
   border-radius: 100px;
   border: 1px solid black;
 }
+
+.links {
+  text-decoration: none;
+  color: black;
+}

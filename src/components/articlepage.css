@@ -1,0 +1,6 @@
+main {
+  background-color: rgba(128, 255, 0, 0.25);
+  border: rgb(128, 255, 0) 1px solid;
+  grid-area: main;
+  height: 100%;
+}
