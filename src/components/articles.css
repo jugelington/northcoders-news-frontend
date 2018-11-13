@@ -4,7 +4,7 @@ main {
   grid-area: main;
 }
 
-#article {
+.article {
   background-color: rgba(128, 128, 128, 0.25);
   border: grey 1px solid;
   border-radius: 40px;
@@ -14,29 +14,32 @@ main {
   grid-template:
     [header-left] 'title title title' 50px [header-right]
     [main-left] 'votes  body user' 1fr [main-right]
-    [footer-left] 'foot  foot user' 30px [footer-right]
+    [footer-left] 'foot  foot foot' 30px [footer-right]
     / 120px 1fr;
 }
 
-#title {
+.article-title {
   grid-area: title;
-  border: blue 1px solid;
-  margin: 0 auto;
+  margin: 5px auto;
   font-size: 25px;
 }
-#body {
+.article-body {
   grid-area: body;
   width: 90%;
   margin: 0 auto;
 }
 
-#foot {
+.article-foot {
   grid-area: foot;
-  margin: 5px auto;
+  margin: 0 auto;
   border: black 1px solid;
+  border-radius: 50px;
+  width: 30%;
+  height: 75%;
+  background-color: rgba(128, 128, 128, 0.25);
 }
 
-#votes {
+.article-votes {
   grid-area: votes;
   background-color: rgba(128, 128, 128, 0.25);
   border: 1px solid black;
@@ -48,11 +51,11 @@ main {
   grid-template-rows: 1fr 1fr 1fr;
 }
 
-#votes h2 {
+.article-votes h2 {
   margin: 0 auto;
 }
 
-#user {
+.article-user {
   grid-area: user;
   padding: 20px;
   margin: 0 auto;
