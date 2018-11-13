@@ -33,3 +33,15 @@ export const login = async username => {
   const { data } = await axios.get(`${BASE_URL}/users/${username}`);
   return data;
 };
+
+export const deleteComment = async commentId => {
+  await axios.delete(`${BASE_URL}/comments/${commentId}`);
+};
+
+export const postComment = async (comment, articleId) => {
+  const { data } = await axios.post(
+    `${BASE_URL}/articles/${articleId}/comments`,
+    comment
+  );
+  return data;
+};

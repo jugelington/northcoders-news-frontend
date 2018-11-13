@@ -12,8 +12,15 @@ import Auth from './components/Auth';
 
 class App extends Component {
   state = {
-    user: null,
-    loggedIn: false
+    user: {
+      _id: '5bd31619f920ba73ca051541',
+      username: 'jessjelly',
+      name: 'Jess Jelly',
+      avatar_url:
+        'https://s-media-cache-ak0.pinimg.com/564x/39/62/ec/3962eca164e60cf46f979c1f57d4078b.jpg',
+      __v: 0
+    },
+    loggedIn: true
   };
 
   render() {
@@ -31,7 +38,11 @@ class App extends Component {
           <Router>
             <Articles path="/" />
             <Articles path="/topics/:topic_slug" />
-            <ArticlePage path="/articles/:article_id" />
+            <ArticlePage
+              path="/articles/:article_id"
+              user={this.state.user ? this.state.user.username : null}
+              userId={this.state.user ? this.state.user._id : null}
+            />
           </Router>
         </Auth>
         <Footer />
