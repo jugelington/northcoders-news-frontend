@@ -21,8 +21,7 @@ class App extends Component {
       avatar_url:
         'https://s-media-cache-ak0.pinimg.com/564x/39/62/ec/3962eca164e60cf46f979c1f57d4078b.jpg',
       __v: 0
-    },
-    loggedIn: true
+    }
   };
 
   render() {
@@ -34,7 +33,7 @@ class App extends Component {
           login={this.login}
           logout={this.logout}
           loggedIn={this.state.loggedIn}
-          user={this.state.user}
+          user={this.state.user ? this.state.user : null}
         />
         <Auth user={this.state.user}>
           <Router>
@@ -46,7 +45,10 @@ class App extends Component {
               userId={this.state.user ? this.state.user._id : null}
             />
             <Profile path="/users/:username" />
-            <Write path="/write" />
+            <Write
+              path="/write"
+              userId={this.state.user ? this.state.user._id : null}
+            />
           </Router>
         </Auth>
         <Footer />

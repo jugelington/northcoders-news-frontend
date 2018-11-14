@@ -8,7 +8,7 @@ class LoginBar extends Component {
   };
 
   render() {
-    return this.props.loggedIn ? (
+    return this.props.user !== null ? (
       <div className="login-bar">
         Hi, {this.props.user.name}! How are you today?
         <Link to={`/users/${this.props.user.username}`}>

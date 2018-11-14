@@ -45,3 +45,12 @@ export const postComment = async (comment, articleId) => {
   );
   return data;
 };
+
+export const postArticle = async (article, topic) => {
+  console.log(article);
+  const { data } = await axios.post(
+    `${BASE_URL}/topics/${topic}/articles`,
+    article
+  );
+  return data;
+};

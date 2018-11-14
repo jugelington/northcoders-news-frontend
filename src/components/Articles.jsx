@@ -25,7 +25,7 @@ class Articles extends Component {
               <p className="article-body">
                 {`${article.body.substring(0, 100)}[...]`}{' '}
                 <Link className="links" to={`/articles/${article._id}`}>
-                  <h3>Read More</h3>
+                  Read More
                 </Link>
               </p>
               <p className="article-foot">
