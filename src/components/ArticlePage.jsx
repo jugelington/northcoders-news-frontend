@@ -25,9 +25,8 @@ class ArticlePage extends Component {
             </p>
             <Vote
               votes={article.votes}
-              article_id={article._id}
-              voted={this.state.voted}
-              toggleVoted={this.toggleVoted}
+              _id={article._id}
+              section={'articles'}
             />
             <Link
               to={`/users/${article.created_by.username}`}

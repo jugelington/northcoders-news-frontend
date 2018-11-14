@@ -22,9 +22,9 @@ export const fetchArticleComments = async id => {
   return data.comments;
 };
 
-export const patchArticleVotes = async (vote, article) => {
+export const patchArticleVotes = async (section, article, direction) => {
   const { data } = await axios.patch(
-    `${BASE_URL}/articles/${article}?vote=${vote}`
+    `${BASE_URL}/${section}/${article}?vote=${direction}`
   );
   return data;
 };

@@ -57,7 +57,7 @@ class Write extends Component {
 
     api
       .postArticle(article, this.state.belongs_to)
-      .then(res => console.log(res));
+      .then(res => this.props.navigate(`/articles/${res.newArticle._id}`));
   };
 }
 

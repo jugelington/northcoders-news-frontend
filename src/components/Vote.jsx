@@ -1,28 +1,47 @@
-import React from 'react';
-import thumbsdown from '../images/thumbsdown.png';
+import React, { Component } from 'react';
 import thumbsup from '../images/thumbsup.png';
-import * as api from '../api';
+import thumbsdown from '../images/thumbsdown.png';
 import './vote.css';
+import * as api from '../api';
 
-const Vote = ({ votes, article_id, voted, toggleVoted }) => {
-  const handleClick = async event => {
-    await api.patchArticleVotes(event.target.value, article_id);
-    toggleVoted();
+class Vote extends Component {
+  state = {
+    voteChange: 0
   };
+  render() {
+    return (
+      <section className="votebox">
+        <button
+          onClick={() => this.vote('up')}
+          disabled={this.state.voteChange === 1}
+        >
+          <img src={thumbsup} alt="upvote" />
+        </button>
+        {this.props.votes + this.state.voteChange}
+        <button
+          onClick={() => this.vote('down')}
+          disabled={this.state.voteChange === -1}
+        >
+          <img
+            src={thumbsdown}
+            alt="downvote"
+            value={'down'}
+            onClick={this.vote}
+          />
+        </button>
+      </section>
+    );
+  }
 
-  return voted === false ? (
-    <div>
-      <button className="vote" onClick={handleClick} value="up">
-        <img src={thumbsup} alt="upvote" />
-      </button>
-      <h2>{votes}</h2>
-      <button className="vote" onClick={handleClick} value="down">
-        <img src={thumbsdown} alt="downvote" />
-      </button>
-    </div>
-  ) : (
-    <h2>{votes}</h2>
-  );
-};
+  vote = direction => {
+    api.patchArticleVotes(this.props.section, this.props._id, direction);
+    this.setState({
+      voteChange:
+        direction === 'up'
+          ? this.state.voteChange + 1
+          : this.state.voteChange - 1
+    });
+  };
+}
 
 export default Vote;
