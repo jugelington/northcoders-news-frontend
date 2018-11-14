@@ -1,9 +1,5 @@
-.vote img {
-  height: 45px;
-  width: 45px;
-  margin: 0 auto;
-  background: none;
-  border: none;
+.votebox img {
+  height: 25px;
 }
 
 .votebox button {
@@ -12,6 +8,5 @@
 }
 
 .votebox {
-  font-size: 30px;
   margin: 0 auto;
 }

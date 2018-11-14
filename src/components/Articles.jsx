@@ -3,6 +3,7 @@ import './articles.css';
 import moment from 'moment';
 import * as api from '../api';
 import { Link } from '@reach/router';
+import Vote from './Vote';
 
 class Articles extends Component {
   state = {
@@ -33,7 +34,11 @@ class Articles extends Component {
                 Comments: {article.comment_count || 0}
               </p>
               <div className="article-votes">
-                <h2>{article.votes}</h2>
+                <Vote
+                  votes={article.votes}
+                  _id={article._id}
+                  section={'articles'}
+                />
               </div>
               <Link
                 className="article-user links"

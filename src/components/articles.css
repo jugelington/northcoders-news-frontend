@@ -45,15 +45,6 @@ h1 {
   background-color: rgba(0, 0, 255, 0.25);
 }
 
-.article-votes {
-  grid-area: votes;
-  background-color: rgba(0, 0, 255, 0.25);
-  margin: 0 auto;
-  height: 60px;
-  width: 60px;
-  border-radius: 100px;
-}
-
 .article-votes h2 {
   margin: 0 auto;
   padding-top: 25%;
