@@ -4,7 +4,8 @@ import moment from 'moment';
 import './articlepage.css';
 import Comments from './Comments';
 import Vote from './Vote';
-import { Link } from '@reach/router';
+import Loading from './Loading';
+import UserDisplay from './UserDisplay';
 
 class ArticlePage extends Component {
   state = {
@@ -28,26 +29,18 @@ class ArticlePage extends Component {
               _id={article._id}
               section={'articles'}
             />
-            <Link
-              to={`/users/${article.created_by.username}`}
-              className="article-user links"
-            >
-              <img
-                className="avatar"
-                src={article.created_by.avatar_url}
-                alt="avatar"
-              />
-              <br />
-              {article.created_by.username}
-            </Link>
+            <UserDisplay
+              username={article.created_by.username}
+              avatarUrl={article.created_by.avatar_url}
+            />
           </div>
         ) : (
-          <p>Article Loading...</p>
+          <Loading />
         )}
         {this.state.loading === false ? (
           <Comments article={article._id} user={this.props.user} />
         ) : (
-          <p>Comments Loading...</p>
+          <Loading />
         )}
       </main>
     );

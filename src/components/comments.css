@@ -18,12 +18,6 @@
   margin: 10px auto;
 }
 
-.comment-user {
-  grid-area: user;
-  padding-top: 25%;
-  text-decoration: none;
-}
-
 .comment-votes {
   grid-area: votes;
   padding-top: 25%;

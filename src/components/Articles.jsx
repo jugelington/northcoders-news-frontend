@@ -4,6 +4,8 @@ import moment from 'moment';
 import * as api from '../api';
 import { Link } from '@reach/router';
 import Vote from './Vote';
+import Loading from './Loading';
+import UserDisplay from './UserDisplay';
 
 class Articles extends Component {
   state = {
@@ -22,16 +24,22 @@ class Articles extends Component {
         {this.state.loading === false ? (
           this.state.articles.map(article => (
             <div className="article" key={article._id}>
-              <h3 className="article-title">{article.title}</h3>
+              <h3 className="article-title">
+                {article.title.length > 60
+                  ? `${article.title.substring(0, 60)}...`
+                  : article.title}
+              </h3>
               <p className="article-body">
-                {`${article.body.substring(0, 100)}[...]`}{' '}
+                {article.body.length > 200
+                  ? `${article.body.substring(0, 200)} [...]`
+                  : `${article.body}`}{' '}
                 <Link className="links" to={`/articles/${article._id}`}>
-                  Read More
+                  <button>Read More</button>
                 </Link>
               </p>
               <p className="article-foot">
-                On: {moment(article.created_at).format('MMMM DD YYYY')}{' '}
-                Comments: {article.comment_count || 0}
+                {moment(article.created_at).format('MMMM DD YYYY')}{' '}
+                {article.comment_count || 0} comments
               </p>
               <div className="article-votes">
                 <Vote
@@ -40,22 +48,14 @@ class Articles extends Component {
                   section={'articles'}
                 />
               </div>
-              <Link
-                className="article-user links"
-                to={`/users/${article.created_by.username}`}
-              >
-                <img
-                  className="avatar"
-                  src={article.created_by.avatar_url}
-                  alt="avatar"
-                />
-                <br />
-                By {article.created_by.username}
-              </Link>
+              <UserDisplay
+                username={article.created_by.username}
+                avatarUrl={article.created_by.avatar_url}
+              />
             </div>
           ))
         ) : (
-          <p>Loading...</p>
+          <Loading />
         )}
       </main>
     );

@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import * as api from '../api';
 import './comments.css';
 import CommentForm from './CommentForm';
-import { Link } from '@reach/router';
 import Vote from './Vote';
+import Loading from './Loading';
+import UserDisplay from './UserDisplay';
 
 class Comments extends Component {
   state = {
@@ -34,17 +35,10 @@ class Comments extends Component {
                   section={'comments'}
                 />
               </div>
-              <Link
-                className="comment-user"
-                to={`/users/${comment.created_by.username}`}
-              >
-                <img
-                  className="avatar"
-                  src={comment.created_by.avatar_url}
-                  alt="avatar"
-                />
-                <br /> {comment.created_by.username}
-              </Link>
+              <UserDisplay
+                username={comment.created_by.username}
+                avatarUrl={comment.created_by.avatar_url}
+              />
 
               <p className="comment-body">{comment.body}</p>
               {this.props.user.username === comment.created_by.username && (
@@ -59,7 +53,7 @@ class Comments extends Component {
             </div>
           ))
         ) : (
-          <p>Loading...</p>
+          <Loading />
         )}
       </section>
     );

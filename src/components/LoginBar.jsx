@@ -17,17 +17,20 @@ class LoginBar extends Component {
         <button onClick={this.props.logout}>Logout</button>
       </div>
     ) : (
-      <form className="login-bar" onSubmit={this.handleSubmit}>
-        <p>Please login to continue</p>
-        <label htmlFor="username">Username: </label>
-        <input
-          id="username"
-          type="text"
-          onChange={this.handleChange}
-          value={this.state.username}
-        />
-        <button>Log in</button>
-      </form>
+      <>
+        <form className="login-bar" onSubmit={this.handleSubmit}>
+          <p>Please login to continue</p>
+          <label htmlFor="username">Username: </label>
+          <input
+            id="username"
+            type="text"
+            onChange={this.handleChange}
+            value={this.state.username}
+          />
+          <button>Log in</button>
+        </form>
+        <main />
+      </>
     );
   }
 
