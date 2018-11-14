@@ -17,7 +17,7 @@ class LoginBar extends Component {
         <button onClick={this.props.logout}>Logout</button>
       </div>
     ) : (
-      <form className="login-bar" id="login-bar" onSubmit={this.handleSubmit}>
+      <form className="login-bar" onSubmit={this.handleSubmit}>
         <p>Please login to continue</p>
         <label htmlFor="username">Username: </label>
         <input

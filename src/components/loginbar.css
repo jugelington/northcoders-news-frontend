@@ -1,14 +1,10 @@
 .login-bar {
-  background-color: rgba(0, 255, 0, 0.1);
-  height: 100%;
-  padding: 0;
+  padding: 15px;
+  margin: 0;
   grid-area: login;
+  background-color: rgba(255, 0, 0, 0.25);
+  border-bottom: rgba(255, 0, 0, 0.25) 6px dotted;
 }
-
-/* .login-bar img {
-  height: 40px;
-  border: none;
-} */
 
 .login-bar button {
   display: inline-block;

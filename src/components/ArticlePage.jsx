@@ -45,11 +45,7 @@ class ArticlePage extends Component {
           <p>Article Loading...</p>
         )}
         {this.state.loading === false ? (
-          <Comments
-            article={article._id}
-            user={this.props.user}
-            userId={this.props.userId}
-          />
+          <Comments article={article._id} user={this.props.user} />
         ) : (
           <p>Comments Loading...</p>
         )}

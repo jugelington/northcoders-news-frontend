@@ -4,18 +4,21 @@ import './comments.css';
 
 class CommentForm extends Component {
   state = {
-    body: '',
-    created_by: this.props.userId
+    body: ''
   };
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="comment">
-          Tell the world what you think, {this.props.user}!
+          Tell the world what you think, {this.props.user.name}!
         </label>
         <br />
-        <textarea id="comment" onChange={this.handleChange} />
+        <textarea
+          id="comment"
+          onChange={this.handleChange}
+          value={this.state.body}
+        />
         <br />
         <button>Comment!</button>
       </form>
@@ -24,9 +27,13 @@ class CommentForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    api
-      .postComment(this.state, this.props.articleId)
-      .then(() => this.props.handleCommentPost());
+    let newComment = {
+      body: this.state.body,
+      created_by: this.props.userId
+    };
+    api.postComment(newComment, this.props.articleId);
+    this.setState({ body: '' });
+    this.props.handleCommentPost(newComment);
   };
 
   handleChange = event => {

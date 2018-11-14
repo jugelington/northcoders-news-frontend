@@ -3,9 +3,9 @@
   height: 100vh;
   display: grid;
   grid-template:
-    'header header header' 100px
-    'nav nav nav' 100px
-    'login login login' 50px
-    'main  main main' 4fr
-    'footer  footer footer' 30px / 1fr;
+    'header' 1fr
+    'nav' 1fr
+    'login' 1fr
+    'main' 4fr
+    'footer' 1fr / 1fr;
 }

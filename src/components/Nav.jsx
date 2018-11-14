@@ -4,7 +4,7 @@ import { Link } from '@reach/router';
 import football from '../images/football.png';
 import coding from '../images/coding.png';
 import cooking from '../images/cooking.png';
-import home from '../images/home.png';
+import infinity from '../images/infinity.png';
 import write from '../images/write.png';
 
 const Nav = () => {
@@ -12,8 +12,8 @@ const Nav = () => {
     <nav>
       <Link to="/">
         <figure className="nav-buttons">
-          <figcaption>Home</figcaption>
-          <img src={home} alt="home" />
+          <figcaption>All Articles</figcaption>
+          <img src={infinity} alt="all articles" />
         </figure>
       </Link>
       <Link to="/topics/football">

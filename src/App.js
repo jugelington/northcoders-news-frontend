@@ -41,8 +41,8 @@ class App extends Component {
             <Articles path="/topics/:topic_slug" />
             <ArticlePage
               path="/articles/:article_id"
-              user={this.state.user ? this.state.user.username : null}
-              userId={this.state.user ? this.state.user._id : null}
+              user={this.state.user ? this.state.user : null}
+              // userId={this.state.user ? this.state.user._id : null}
             />
             <Profile path="/users/:username" />
             <Write

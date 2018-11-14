@@ -1,9 +1,38 @@
 .comment {
-  background-color: rgba(0, 0, 255, 0.25);
+  border: rgba(255, 0, 0, 0.25) 3px dotted;
+  height: 140px;
   border-radius: 40px;
   width: 60%;
   margin: 10px auto;
+  display: grid;
+  grid-template:
+    [header-left] 'votes body user' 40px [header-right]
+    [main-left] 'votes  body user' 1fr [main-right]
+    [footer-left] 'votes  foot user' 30px [footer-right]
+    / 1fr 6fr 1fr;
+}
+
+.comment-body {
+  grid-area: body;
   padding: 10px;
+  margin: 10px auto;
+}
+
+.comment-user {
+  grid-area: user;
+  padding-top: 25%;
+  text-decoration: none;
+}
+
+.comment-votes {
+  grid-area: votes;
+  padding-top: 25%;
+  margin-right: 10px;
+}
+
+.comment-delete {
+  grid-area: foot;
+  margin: 5px auto;
 }
 
 textarea {
