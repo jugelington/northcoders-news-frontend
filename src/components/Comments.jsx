@@ -76,17 +76,23 @@ class Comments extends Component {
   };
 
   handleDelete = event => {
-    api
-      .deleteComment(event.target.value)
-      .then(() => this.setState({ renderTrigger: !this.state.renderTrigger }));
+    api.deleteComment(event.target.value);
+    this.setState({
+      comments: this.state.comments.filter(
+        comment => comment._id !== event.target.value
+      )
+    });
   };
 
   handleCommentPost = newComment => {
-    newComment.votes = 0;
-    newComment.created_by = this.props.user;
-    console.log(newComment);
-    console.log(this.state.comments[1]);
-    this.setState({ comments: [newComment, ...this.state.comments] });
+    const fakeComment = {
+      _id: 'newComment',
+      votes: 0,
+      created_by: this.props.user,
+      body: newComment.body
+    };
+
+    this.setState({ comments: [fakeComment, ...this.state.comments] });
   };
 }
 

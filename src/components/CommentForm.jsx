@@ -29,7 +29,7 @@ class CommentForm extends Component {
     event.preventDefault();
     let newComment = {
       body: this.state.body,
-      created_by: this.props.userId
+      created_by: this.props.user._id
     };
     api.postComment(newComment, this.props.articleId);
     this.setState({ body: '' });
