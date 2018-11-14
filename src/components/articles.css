@@ -13,14 +13,14 @@ h1 {
 
 .article {
   background-color: rgba(0, 0, 255, 0.25);
-  height: 120px;
+  height: 140px;
   border-radius: 40px;
   width: 75%;
   margin: 10px auto;
   display: grid;
   grid-template:
     [header-left] 'title title title' 40px [header-right]
-    [main-left] 'votes  body user' 50px [main-right]
+    [main-left] 'votes  body user' 1fr [main-right]
     [footer-left] 'foot  foot foot' 30px [footer-right]
     / 120px 1fr;
 }
@@ -76,4 +76,9 @@ h1 {
 .links {
   text-decoration: none;
   color: black;
+}
+
+.links h3 {
+  margin: 5px auto;
+  padding: 5px;
 }

@@ -29,7 +29,7 @@ export const patchArticleVotes = async (vote, article) => {
   return data;
 };
 
-export const login = async username => {
+export const fetchUser = async username => {
   const { data } = await axios.get(`${BASE_URL}/users/${username}`);
   return data;
 };

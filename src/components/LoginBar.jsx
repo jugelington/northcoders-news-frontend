@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './loginbar.css';
+import { Link } from '@reach/router';
 
 class LoginBar extends Component {
   state = {
@@ -10,6 +11,9 @@ class LoginBar extends Component {
     return this.props.loggedIn ? (
       <div className="login-bar">
         Hi, {this.props.user.name}! How are you today?
+        <Link to={`/users/${this.props.user.username}`}>
+          <button>My Profile</button>
+        </Link>
         <button onClick={this.props.logout}>Logout</button>
       </div>
     ) : (

@@ -5,6 +5,7 @@ import football from '../images/football.png';
 import coding from '../images/coding.png';
 import cooking from '../images/cooking.png';
 import home from '../images/home.png';
+import write from '../images/write.png';
 
 const Nav = () => {
   return (
@@ -31,6 +32,12 @@ const Nav = () => {
         <figure className="nav-buttons">
           <figcaption>Cooking</figcaption>
           <img src={cooking} alt="cooking" />
+        </figure>
+      </Link>
+      <Link to="/write">
+        <figure className="nav-buttons">
+          <figcaption>Write Article</figcaption>
+          <img src={write} alt="write an article" />
         </figure>
       </Link>
     </nav>

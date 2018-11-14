@@ -9,6 +9,8 @@ import ArticlePage from './components/ArticlePage';
 import LoginBar from './components/LoginBar';
 import * as api from './api';
 import Auth from './components/Auth';
+import Profile from './components/Profile';
+import Write from './components/Write';
 
 class App extends Component {
   state = {
@@ -43,6 +45,8 @@ class App extends Component {
               user={this.state.user ? this.state.user.username : null}
               userId={this.state.user ? this.state.user._id : null}
             />
+            <Profile path="/users/:username" />
+            <Write path="/write" />
           </Router>
         </Auth>
         <Footer />
@@ -51,7 +55,9 @@ class App extends Component {
   }
 
   login = username => {
-    api.login(username).then(user => this.setState({ user, loggedIn: true }));
+    api
+      .fetchUser(username)
+      .then(user => this.setState({ user, loggedIn: true }));
   };
 
   logout = () => {

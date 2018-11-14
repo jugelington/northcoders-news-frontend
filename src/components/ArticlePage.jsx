@@ -4,6 +4,7 @@ import moment from 'moment';
 import './articlepage.css';
 import Comments from './Comments';
 import Vote from './Vote';
+import { Link } from '@reach/router';
 
 class ArticlePage extends Component {
   state = {
@@ -28,7 +29,10 @@ class ArticlePage extends Component {
               voted={this.state.voted}
               toggleVoted={this.toggleVoted}
             />
-            <div className="article-user">
+            <Link
+              to={`/users/${article.created_by.username}`}
+              className="article-user links"
+            >
               <img
                 className="avatar"
                 src={article.created_by.avatar_url}
@@ -36,7 +40,7 @@ class ArticlePage extends Component {
               />
               <br />
               {article.created_by.username}
-            </div>
+            </Link>
           </div>
         ) : (
           <p>Article Loading...</p>

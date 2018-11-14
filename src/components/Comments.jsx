@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as api from '../api';
 import './comments.css';
 import CommentForm from './CommentForm';
+import { Link } from '@reach/router';
 
 class Comments extends Component {
   state = {
@@ -23,14 +24,16 @@ class Comments extends Component {
         {this.state.loading === false ? (
           this.state.comments.map(comment => (
             <div className="comment" key={comment._id}>
-              <h3>
-                {comment.created_by.name} ({comment.created_by.username}){' '}
-                <img
-                  className="avatar"
-                  src={comment.created_by.avatar_url}
-                  alt="avatar"
-                />
-              </h3>
+              <Link to={`/users/${comment.created_by.username}`}>
+                <h3>
+                  {comment.created_by.name} ({comment.created_by.username}){' '}
+                  <img
+                    className="avatar"
+                    src={comment.created_by.avatar_url}
+                    alt="avatar"
+                  />
+                </h3>
+              </Link>
               <p>{comment.body}</p>
               {this.props.user === comment.created_by.username && (
                 <button onClick={this.handleDelete} value={comment._id}>

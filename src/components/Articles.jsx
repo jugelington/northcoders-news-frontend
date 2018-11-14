@@ -25,7 +25,7 @@ class Articles extends Component {
               <p className="article-body">
                 {`${article.body.substring(0, 100)}[...]`}{' '}
                 <Link className="links" to={`/articles/${article._id}`}>
-                  Read More
+                  <h3>Read More</h3>
                 </Link>
               </p>
               <p className="article-foot">
@@ -35,7 +35,10 @@ class Articles extends Component {
               <div className="article-votes">
                 <h2>{article.votes}</h2>
               </div>
-              <div className="article-user">
+              <Link
+                className="article-user links"
+                to={`/users/${article.created_by.username}`}
+              >
                 <img
                   className="avatar"
                   src={article.created_by.avatar_url}
@@ -43,7 +46,7 @@ class Articles extends Component {
                 />
                 <br />
                 By {article.created_by.username}
-              </div>
+              </Link>
             </div>
           ))
         ) : (
