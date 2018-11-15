@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../api';
 import moment from 'moment';
-import './articlepage.css';
+import '../css/articlepage.css';
 import Comments from './Comments';
 import Vote from './Vote';
 import Loading from './Loading';
@@ -74,7 +74,7 @@ class ArticlePage extends Component {
   };
 
   handleDelete = event => {
-    api.deleteArticle(event.target.value);
+    api.deleteArticle(event.target.value).then(() => this.props.navigate('/'));
   };
 }
 

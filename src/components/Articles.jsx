@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './articles.css';
+import '../css/articles.css';
 import moment from 'moment';
 import * as api from '../api';
 import { Link } from '@reach/router';

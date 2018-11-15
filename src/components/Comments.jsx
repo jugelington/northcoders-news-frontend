@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as api from '../api';
-import './comments.css';
+import '../css/comments.css';
 import CommentForm from './CommentForm';
 import Vote from './Vote';
 import Loading from './Loading';

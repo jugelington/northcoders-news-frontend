@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './loginbar.css';
+import '../css/loginbar.css';
 import { Link } from '@reach/router';
 
 class LoginBar extends Component {
