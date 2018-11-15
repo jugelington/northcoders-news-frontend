@@ -10,24 +10,26 @@ class Users extends Component {
     return (
       <main>
         <h1>Users:</h1>
-        {this.state.loading === false ? (
-          this.state.users.map(user => {
-            return (
-              <div key={user._id} className="users-box">
-                <Link className="links" to={`/users/${user.username}`}>
-                  <h6>Username:</h6> {user.username}
-                  <br />
-                  <h6>Real name:</h6> {user.name}
-                  <br />
-                  <h6>Avatar:</h6>
-                  <img src={user.avatar_url} alt="avatar" />
-                </Link>
-              </div>
-            );
-          })
-        ) : (
-          <Loading />
-        )}
+        <section class="users-container">
+          {this.state.loading === false ? (
+            this.state.users.map(user => {
+              return (
+                <div key={user._id} className="users-box">
+                  <Link className="links" to={`/users/${user.username}`}>
+                    <h6>Username:</h6> {user.username}
+                    <br />
+                    <h6>Real name:</h6> {user.name}
+                    <br />
+                    <h6>Avatar:</h6>
+                    <img src={user.avatar_url} alt="avatar" />
+                  </Link>
+                </div>
+              );
+            })
+          ) : (
+            <Loading />
+          )}{' '}
+        </section>
       </main>
     );
   }

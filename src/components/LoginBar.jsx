@@ -19,7 +19,6 @@ class LoginBar extends Component {
     ) : (
       <>
         <form className="login-bar" onSubmit={this.handleSubmit}>
-          <p>Please login to continue</p>
           <label htmlFor="username">Username: </label>
           <input
             id="username"

@@ -1,7 +1,10 @@
 .users-box {
   border: rgba(255, 0, 0, 0.25) 3px dotted;
   border-radius: 40px;
-  margin: 10px auto;
-  width: fit-content;
-  padding: 10px;
+}
+
+.users-container {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
 }

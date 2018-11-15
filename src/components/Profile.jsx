@@ -63,10 +63,17 @@ class Profile extends Component {
                     {comment.body}
                     <br />
                     <h5>Votes: {comment.votes}</h5>
-                    <h6>Article: {comment.belongs_to.title}</h6>
-                    <Link to={`/articles/${comment.belongs_to._id}`}>
-                      <button>Go To</button>
-                    </Link>
+                    <h6>
+                      Article:{' '}
+                      {comment.belongs_to
+                        ? comment.belongs_to.title
+                        : 'DELETED'}
+                    </h6>
+                    {comment.belongs_to && (
+                      <Link to={`/articles/${comment.belongs_to._id}`}>
+                        <button>Go To</button>
+                      </Link>
+                    )}
                   </div>
                 );
               })}
