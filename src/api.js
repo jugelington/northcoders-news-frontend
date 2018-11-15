@@ -34,17 +34,20 @@ export const fetchUser = async username => {
   return data;
 };
 
+export const fetchUserSubmissions = async (userId, category) => {
+  const { data } = await axios.get(`${BASE_URL}/users/${userId}/${category}`);
+  return data;
+};
+
 export const deleteComment = async commentId => {
   await axios.delete(`${BASE_URL}/comments/${commentId}`);
 };
 
 export const postComment = async (comment, articleId) => {
-  console.log('enters postComment:', comment);
   const { data } = await axios.post(
     `${BASE_URL}/articles/${articleId}/comments`,
     comment
   );
-  console.log('data returned:', data);
   return data;
 };
 
