@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../css/LoginBar.css';
-import { Link } from '@reach/router';
 
 class LoginBar extends Component {
   state = {

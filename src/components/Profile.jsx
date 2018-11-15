@@ -9,6 +9,8 @@ class Profile extends Component {
     user: {},
     articleLoading: true,
     commentLoading: true,
+    hideArticles: true,
+    hideComments: true,
     articles: [],
     comments: []
   };
@@ -31,19 +33,23 @@ class Profile extends Component {
                   return acc + curr.votes;
                 }, 0)}
               </p>
-              {this.state.articles.map(article => {
-                return (
-                  <div key={article._id} className="profile-box">
-                    <h3>{article.title}</h3>
-                    <Link to={`/articles/${article._id}`}>
-                      <button>Go To</button>
-                    </Link>{' '}
-                    <br />
-                    Votes: {article.votes} <br />
-                    Comments: {article.comment_count || 0}
-                  </div>
-                );
-              })}
+              <button value="articles" onClick={this.show}>
+                Show Articles
+              </button>
+              {this.state.hideArticles !== true &&
+                this.state.articles.map(article => {
+                  return (
+                    <div key={article._id} className="profile-box">
+                      <h3>{article.title}</h3>
+                      <Link to={`/articles/${article._id}`}>
+                        <button>Go To</button>
+                      </Link>{' '}
+                      <br />
+                      Votes: {article.votes} <br />
+                      Comments: {article.comment_count || 0}
+                    </div>
+                  );
+                })}
             </>
           ) : (
             <Loading />
@@ -57,26 +63,30 @@ class Profile extends Component {
                   return acc + curr.votes;
                 }, 0)}
               </p>
-              {this.state.comments.map(comment => {
-                return (
-                  <div key={comment._id} className="profile-box">
-                    {comment.body}
-                    <br />
-                    <h5>Votes: {comment.votes}</h5>
-                    <h6>
-                      Article:{' '}
-                      {comment.belongs_to
-                        ? comment.belongs_to.title
-                        : 'DELETED'}
-                    </h6>
-                    {comment.belongs_to && (
-                      <Link to={`/articles/${comment.belongs_to._id}`}>
-                        <button>Go To</button>
-                      </Link>
-                    )}
-                  </div>
-                );
-              })}
+              <button value="comments" onClick={this.show}>
+                Show Comments
+              </button>
+              {this.state.hideComments !== true &&
+                this.state.comments.map(comment => {
+                  return (
+                    <div key={comment._id} className="profile-box">
+                      {comment.body}
+                      <br />
+                      <h5>Votes: {comment.votes}</h5>
+                      <h6>
+                        Article:{' '}
+                        {comment.belongs_to
+                          ? comment.belongs_to.title
+                          : 'DELETED'}
+                      </h6>
+                      {comment.belongs_to && (
+                        <Link to={`/articles/${comment.belongs_to._id}`}>
+                          <button>Go To</button>
+                        </Link>
+                      )}
+                    </div>
+                  );
+                })}
             </>
           ) : (
             <Loading />
@@ -105,6 +115,13 @@ class Profile extends Component {
           .then(comments => this.setState({ comments, commentLoading: false }));
       });
   }
+
+  show = event => {
+    const { value } = event.target;
+    value === 'comments'
+      ? this.setState({ hideComments: !this.state.hideComments })
+      : this.setState({ hideArticles: !this.state.hideArticles });
+  };
 }
 
 export default Profile;
