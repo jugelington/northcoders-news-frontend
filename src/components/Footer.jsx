@@ -4,7 +4,7 @@ import '../css/Footer.css';
 const Footer = () => {
   return (
     <footer>
-      <h3>Footer</h3>
+      <h3>Julian Beighton-Dykes 2018</h3>
     </footer>
   );
 };
