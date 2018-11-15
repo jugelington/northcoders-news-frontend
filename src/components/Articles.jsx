@@ -84,10 +84,14 @@ class Articles extends Component {
         });
   };
 
-  alterSort = sort => {
-    this.setState({
-      articles: _.sortBy(this.state.articles, [sort]).reverse()
-    });
+  alterSort = (sort, direction) => {
+    direction === 'descending'
+      ? this.setState({
+          articles: _.sortBy(this.state.articles, [sort]).reverse()
+        })
+      : this.setState({
+          articles: _.sortBy(this.state.articles, [sort])
+        });
   };
 }
 

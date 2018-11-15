@@ -5,14 +5,19 @@ class SortArticles extends Component {
     return (
       <select onChange={this.handleChange}>
         <option value="null">Sort by</option>
-        <option value="votes">Most Popular</option>
-        <option value="created_at">Most Recent</option>
+        <option value="votes descending">Loved</option>
+        <option value="votes ascending">Hated</option>
+        <option value="created_at descending">Newest</option>
+        <option value="created_at ascending">Oldest</option>
       </select>
     );
   }
 
   handleChange = event => {
-    this.props.alterSort(event.target.value);
+    const { value } = event.target;
+    const sort = value.split(' ')[0];
+    const direction = value.split(' ')[1];
+    this.props.alterSort(sort, direction);
   };
 }
 
