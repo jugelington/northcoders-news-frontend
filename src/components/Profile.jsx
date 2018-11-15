@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import * as api from '../api';
 import Loading from './Loading';
+import { Link } from '@reach/router';
+import './profile.css';
 
 class Profile extends Component {
   state = {
@@ -15,15 +17,32 @@ class Profile extends Component {
     return (
       <>
         <main>
-          <h1>User Profile</h1>
-          <img src={this.state.user.avatar_url} alt="avatar" /> <br />
-          Username: {this.state.user.username} <br />
-          Name: {this.state.user.name} <br />
+          <section className="avatar-holder">
+            <h1>{this.props.username}</h1> <br />
+            <img src={this.state.user.avatar_url} alt="avatar" /> <br />
+          </section>
+
           {this.state.articleLoading === false ? (
             <>
-              <h2>Your Articles:</h2>
+              <h2>Articles posted:</h2>
+              <p>
+                Total Votes:{' '}
+                {this.state.articles.reduce((acc, curr) => {
+                  return acc + curr.votes;
+                }, 0)}
+              </p>
               {this.state.articles.map(article => {
-                return <p>{article.title}</p>;
+                return (
+                  <div key={article._id} className="profile-box">
+                    <h3>{article.title}</h3>
+                    <Link to={`/articles/${article._id}`}>
+                      <button>Go To</button>
+                    </Link>{' '}
+                    <br />
+                    Votes: {article.votes} <br />
+                    Comments: {article.comment_count || 0}
+                  </div>
+                );
               })}
             </>
           ) : (
@@ -31,9 +50,25 @@ class Profile extends Component {
           )}
           {this.state.commentLoading === false ? (
             <>
-              <h2>Your Comments:</h2>
+              <h2>Comments posted:</h2>
+              <p>
+                Total Votes:{' '}
+                {this.state.comments.reduce((acc, curr) => {
+                  return acc + curr.votes;
+                }, 0)}
+              </p>
               {this.state.comments.map(comment => {
-                return <p>{comment.body}</p>;
+                return (
+                  <div key={comment._id} className="profile-box">
+                    {comment.body}
+                    <br />
+                    <h5>Votes: {comment.votes}</h5>
+                    <h6>Article: {comment.belongs_to.title}</h6>
+                    <Link to={`/articles/${comment.belongs_to._id}`}>
+                      <button>Go To</button>
+                    </Link>
+                  </div>
+                );
               })}
             </>
           ) : (
@@ -49,10 +84,15 @@ class Profile extends Component {
       .fetchUser(this.props.username)
       .then(user => this.setState({ user }))
       .then(() => {
-        // console.log(this.state.user._id);
         api
           .fetchUserSubmissions(this.state.user._id, 'articles')
-          .then(articles => this.setState({ articles, articleLoading: false }));
+          .then(articles => {
+            console.log(articles);
+            this.setState({
+              articles: articles.articles,
+              articleLoading: false
+            });
+          });
         api
           .fetchUserSubmissions(this.state.user._id, 'comments')
           .then(comments => this.setState({ comments, commentLoading: false }));
