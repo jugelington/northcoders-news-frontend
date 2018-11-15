@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
-import '../css/userdisplay.css';
+import '../css/UserDisplay.css';
 import coding from '../images/coding.png';
 
 class UserDisplay extends Component {

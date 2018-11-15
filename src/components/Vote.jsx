@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import thumbsup from '../images/thumbsup.png';
 import thumbsdown from '../images/thumbsdown.png';
-import '../css/vote.css';
+import '../css/Vote.css';
 import * as api from '../api';
 
 class Vote extends Component {

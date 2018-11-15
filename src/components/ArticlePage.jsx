@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../api';
 import moment from 'moment';
-import '../css/articlepage.css';
+import '../css/ArticlePage.css';
 import Comments from './Comments';
 import Vote from './Vote';
 import Loading from './Loading';

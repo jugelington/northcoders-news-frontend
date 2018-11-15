@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/nav.css';
+import '../css/Nav.css';
 import { Link } from '@reach/router';
 import football from '../images/football.png';
 import coding from '../images/coding.png';

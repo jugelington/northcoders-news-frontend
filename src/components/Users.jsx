@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../api';
 import Loading from './Loading';
-import '../css/users.css';
+import '../css/Users.css';
 import { Link } from '@reach/router';
 
 class Users extends Component {

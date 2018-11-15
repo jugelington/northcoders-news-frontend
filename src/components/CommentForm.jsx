@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as api from '../api';
-import '../css/comments.css';
+import '../css/Comments.css';
 
 class CommentForm extends Component {
   state = {

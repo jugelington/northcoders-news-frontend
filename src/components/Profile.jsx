@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as api from '../api';
 import Loading from './Loading';
 import { Link } from '@reach/router';
-import '../css/profile.css';
+import '../css/Profile.css';
 
 class Profile extends Component {
   state = {
