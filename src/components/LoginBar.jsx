@@ -11,10 +11,6 @@ class LoginBar extends Component {
     return this.props.user !== null ? (
       <div className="login-bar">
         Hi, {this.props.user.name}! How are you today?
-        <Link to={`/users/${this.props.user.username}`}>
-          <button>My Profile</button>
-        </Link>
-        <button onClick={this.props.logout}>Logout</button>
       </div>
     ) : (
       <>

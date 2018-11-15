@@ -25,3 +25,8 @@ figcaption {
   padding-bottom: 5px;
   text-emphasis: none;
 }
+
+nav button {
+  background: none;
+  border: none;
+}

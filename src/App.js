@@ -29,10 +29,12 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Nav />
+        <Nav
+          user={this.state.user ? this.state.user : null}
+          logout={this.logout}
+        />
         <LoginBar
           login={this.login}
-          logout={this.logout}
           loggedIn={this.state.loggedIn}
           user={this.state.user ? this.state.user : null}
         />
