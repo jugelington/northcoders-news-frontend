@@ -6,6 +6,8 @@ import { Link } from '@reach/router';
 import Vote from './Vote';
 import Loading from './Loading';
 import UserDisplay from './UserDisplay';
+import SortArticles from './SortArticles';
+import _ from 'lodash';
 
 class Articles extends Component {
   state = {
@@ -21,6 +23,7 @@ class Articles extends Component {
             ? `Articles on ${this.props.topic_slug}`
             : 'All Articles'}
         </h1>
+        <SortArticles alterSort={this.alterSort} />
         {this.state.loading === false ? (
           this.state.articles.map(article => (
             <div className="article" key={article._id}>
@@ -79,6 +82,12 @@ class Articles extends Component {
       : api.fetchAllArticles().then(articles => {
           this.setState({ articles, loading: false });
         });
+  };
+
+  alterSort = sort => {
+    this.setState({
+      articles: _.sortBy(this.state.articles, [sort]).reverse()
+    });
   };
 }
 
