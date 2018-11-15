@@ -23,16 +23,25 @@ class ArticlePage extends Component {
             <p className="article-body">{article.body}</p>
             <p className="article-foot">
               On: {moment(article.created_at).format('MMMM DD YYYY')}
-            </p>
+            </p>{' '}
             <Vote
               votes={article.votes}
               _id={article._id}
               section={'articles'}
-            />
+            />{' '}
             <UserDisplay
               username={article.created_by.username}
               avatarUrl={article.created_by.avatar_url}
             />
+            {this.props.user.username === article.created_by.username && (
+              <button
+                onClick={this.handleDelete}
+                value={article._id}
+                className="article-delete"
+              >
+                Delete
+              </button>
+            )}
           </div>
         ) : (
           <Loading />
@@ -62,6 +71,10 @@ class ArticlePage extends Component {
 
   toggleVoted = () => {
     this.setState({ voted: true });
+  };
+
+  handleDelete = event => {
+    api.deleteArticle(event.target.value);
   };
 }
 

@@ -11,6 +11,7 @@ import * as api from './api';
 import Auth from './components/Auth';
 import Profile from './components/Profile';
 import Write from './components/Write';
+import Users from './components/Users';
 
 class App extends Component {
   state = {
@@ -42,13 +43,13 @@ class App extends Component {
             <ArticlePage
               path="/articles/:article_id"
               user={this.state.user ? this.state.user : null}
-              // userId={this.state.user ? this.state.user._id : null}
             />
             <Profile path="/users/:username" />
             <Write
               path="/write"
               userId={this.state.user ? this.state.user._id : null}
             />
+            <Users path="/users" />
           </Router>
         </Auth>
         <Footer />

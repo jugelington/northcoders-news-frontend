@@ -18,3 +18,8 @@ main {
     [footer-left] 'foot  foot foot' 30px [footer-right]
     / 120px 1fr;
 }
+
+.article-delete {
+  width: 50%;
+  margin: 5px auto;
+}

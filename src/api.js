@@ -39,8 +39,12 @@ export const fetchUserSubmissions = async (userId, category) => {
   return data;
 };
 
-export const deleteComment = async commentId => {
-  await axios.delete(`${BASE_URL}/comments/${commentId}`);
+export const deleteComment = async id => {
+  await axios.delete(`${BASE_URL}/comments/${id}`);
+};
+
+export const deleteArticle = async id => {
+  await axios.delete(`${BASE_URL}/articles/${id}`);
 };
 
 export const postComment = async (comment, articleId) => {
@@ -56,5 +60,10 @@ export const postArticle = async (article, topic) => {
     `${BASE_URL}/topics/${topic}/articles`,
     article
   );
+  return data;
+};
+
+export const fetchAllUsers = async () => {
+  const { data } = await axios.get(`${BASE_URL}/users`);
   return data;
 };

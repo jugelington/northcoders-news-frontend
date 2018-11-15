@@ -6,6 +6,7 @@ import coding from '../images/coding.png';
 import cooking from '../images/cooking.png';
 import infinity from '../images/infinity.png';
 import write from '../images/write.png';
+import users from '../images/users.png';
 
 const Nav = () => {
   return (
@@ -38,6 +39,12 @@ const Nav = () => {
         <figure className="nav-buttons">
           <figcaption>Write Article</figcaption>
           <img src={write} alt="write an article" />
+        </figure>
+      </Link>
+      <Link to="/users">
+        <figure className="nav-buttons">
+          <figcaption>Users</figcaption>
+          <img src={users} alt="users" />
         </figure>
       </Link>
     </nav>
