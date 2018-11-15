@@ -1,11 +1,14 @@
 .App {
+  background-color: rgb(236, 178, 178);
   text-align: center;
   height: 100vh;
-  display: grid;
-  grid-template:
-    'header' 90px
-    'nav' 70px
-    'login' 30px
-    'main' 70vh
-    'footer' 40px / 1fr;
+  display: flex;
+  flex-flow: column;
+}
+
+main {
+  background-color: rgb(236, 178, 178);
+  border: 1px rgba(255, 0, 0, 0) solid;
+  overflow: scroll;
+  padding-bottom: 1em;
 }

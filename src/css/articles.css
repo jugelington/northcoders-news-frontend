@@ -1,52 +1,29 @@
-#articles-container {
-  grid-area: main;
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0;
-}
-
 h1 {
   margin: 0;
 }
 
 .article {
   border: rgba(255, 0, 0, 0.25) 5px dotted;
-  height: 140px;
   border-radius: 40px;
   width: 75%;
-  margin: 10px auto;
+  margin: 1em auto;
   display: grid;
-  grid-template:
-    [header-left] 'votes title user' 40px [header-right]
-    [main-left] 'votes  body user' 1fr [main-right]
-    [footer-left] 'votes  foot user' 30px [footer-right]
-    / 1fr 6fr 1fr;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .article-title {
-  grid-area: title;
-  margin: 5px auto;
   font-size: 20px;
 }
 .article-body {
-  grid-area: body;
   width: 90%;
   margin: 0 auto;
 }
 
 .article-votes {
-  grid-area: votes;
-  padding-top: 25%;
-  margin-right: 10px;
-}
-
-.article-foot {
-  grid-area: foot;
+  padding-top: 1em;
   margin: 0 auto;
-  border-radius: 50px;
-  width: 50%;
-  height: 75%;
 }
 
 .links {

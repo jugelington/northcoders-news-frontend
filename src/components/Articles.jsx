@@ -27,21 +27,16 @@ class Articles extends Component {
         {this.state.loading === false ? (
           this.state.articles.map(article => (
             <div className="article" key={article._id}>
-              <h3 className="article-title">
-                {article.title.length > 60
-                  ? `${article.title.substring(0, 60)}...`
-                  : article.title}
-              </h3>
+              <h3 className="article-title">{article.title}</h3>
               <p className="article-body">
-                {article.body.length > 200
-                  ? `${article.body.substring(0, 200)} [...]`
-                  : `${article.body}`}{' '}
+                {article.body} <br />
                 <Link className="links" to={`/articles/${article._id}`}>
                   <button>Read More</button>
                 </Link>
               </p>
               <p className="article-foot">
-                {moment(article.created_at).format('MMMM DD YYYY')}{' '}
+                {moment(article.created_at).format('MMMM DD YYYY')}
+                <br />
                 {article.comment_count || 0} comments
               </p>
               <div className="article-votes">

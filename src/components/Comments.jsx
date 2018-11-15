@@ -27,6 +27,8 @@ class Comments extends Component {
               className="comment"
               key={comment._id ? comment._id : 'newComment'}
             >
+              {' '}
+              <p className="comment-body">{comment.body}</p>
               <div className="comment-votes">
                 <Vote
                   id="comment"
@@ -39,8 +41,6 @@ class Comments extends Component {
                 username={comment.created_by.username}
                 avatarUrl={comment.created_by.avatar_url}
               />
-
-              <p className="comment-body">{comment.body}</p>
               {this.props.user.username === comment.created_by.username && (
                 <button
                   onClick={this.handleDelete}
