@@ -46,24 +46,20 @@ class App extends Component {
               user={this.state.user ? this.state.user : null}
             />
             <Users path="/users" />
+            <Error path="/error" />
           </Router>
         </Auth>
-        <Router>
-          <Error path="error" />
-        </Router>
         <Footer />
       </div>
     );
   }
 
   login = username => {
-    api
-      .fetchUser(username)
-      .then(user => this.setState({ user, loggedIn: true }));
+    api.fetchUser(username).then(user => this.setState({ user }));
   };
 
   logout = () => {
-    this.setState({ user: null, loggedIn: false });
+    this.setState({ user: null });
   };
 }
 

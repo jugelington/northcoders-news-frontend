@@ -23,7 +23,6 @@ class Profile extends Component {
             <h1>{this.props.username}</h1> <br />
             <img src={this.state.user.avatar_url} alt="avatar" /> <br />
           </section>
-
           {this.state.articleLoading === false ? (
             <>
               <h2>Articles posted:</h2>
@@ -112,7 +111,12 @@ class Profile extends Component {
         api
           .fetchUserSubmissions(this.state.user._id, 'comments')
           .then(comments => this.setState({ comments, commentLoading: false }));
-      });
+      })
+      .catch(() =>
+        this.props.navigate('/error', {
+          state: { status: 404, msg: 'User Not Found' }
+        })
+      );
   }
 
   show = event => {

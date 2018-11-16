@@ -10,7 +10,7 @@ class Users extends Component {
     return (
       <main>
         <h1>Users:</h1>
-        <section class="users-container">
+        <section className="users-container">
           {this.state.loading === false ? (
             this.state.users.map(user => {
               return (

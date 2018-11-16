@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 
 class Error extends Component {
   render() {
-    return <div>hi</div>;
+    return (
+      <div>
+        <p>
+          Error - {this.props.location.state.status} <br />
+          {this.props.location.state.msg}{' '}
+        </p>
+      </div>
+    );
   }
 }
 

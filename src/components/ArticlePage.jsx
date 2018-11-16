@@ -11,8 +11,7 @@ import DeleteButton from './DeleteButton';
 class ArticlePage extends Component {
   state = {
     article: {},
-    loading: true,
-    voted: false
+    loading: true
   };
   render() {
     const { article } = this.state;
@@ -61,11 +60,16 @@ class ArticlePage extends Component {
   }
 
   getArticle = () => {
-    api.fetchArticleById(this.props.article_id).then(article => {
-      this.setState({ article, loading: false }).catch(err =>
-        this.props.navigate('/error')
+    api
+      .fetchArticleById(this.props.article_id)
+      .then(article => {
+        this.setState({ article, loading: false });
+      })
+      .catch(() =>
+        this.props.navigate('/error', {
+          state: { status: 404, msg: 'Article Not Found' }
+        })
       );
-    });
   };
 
   toggleVoted = () => {
