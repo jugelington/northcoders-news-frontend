@@ -6,6 +6,7 @@ import Comments from './Comments';
 import Vote from './Vote';
 import Loading from './Loading';
 import UserDisplay from './UserDisplay';
+import DeleteButton from './DeleteButton';
 
 class ArticlePage extends Component {
   state = {
@@ -33,15 +34,11 @@ class ArticlePage extends Component {
               username={article.created_by.username}
               avatarUrl={article.created_by.avatar_url}
             />
-            {this.props.user.username === article.created_by.username && (
-              <button
-                onClick={this.handleDelete}
-                value={article._id}
-                className="article-delete"
-              >
-                Delete
-              </button>
-            )}
+            <DeleteButton
+              handleDelete={this.handleDelete}
+              user={this.props.user}
+              item={article}
+            />
           </div>
         ) : (
           <Loading />
@@ -65,7 +62,9 @@ class ArticlePage extends Component {
 
   getArticle = () => {
     api.fetchArticleById(this.props.article_id).then(article => {
-      this.setState({ article, loading: false });
+      this.setState({ article, loading: false }).catch(err =>
+        this.props.navigate('/error')
+      );
     });
   };
 

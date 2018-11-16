@@ -5,7 +5,8 @@ class Write extends Component {
   state = {
     title: '',
     body: '',
-    belongs_to: 'football'
+    belongs_to: 'football',
+    error: false
   };
 
   render() {
@@ -36,6 +37,16 @@ class Write extends Component {
           />
           <br />
           <button>Submit</button>
+          {this.state.error && (
+            <>
+              <br />
+              <p>
+                Sorry, that didn't work! <br />
+                Please enter a Title and a Body for your article, then try
+                again!
+              </p>
+            </>
+          )}
         </form>
       </main>
     );
@@ -52,12 +63,17 @@ class Write extends Component {
       title: this.state.title,
       body: this.state.body,
       belongs_to: this.state.belongs_to,
-      created_by: this.props.userId
+      created_by: this.props.user._id
     };
 
     api
       .postArticle(article, this.state.belongs_to)
-      .then(res => this.props.navigate(`/articles/${res.newArticle._id}`));
+      .then(
+        res =>
+          this.props.navigate(`/articles/${res.newArticle._id}`) &&
+          this.setState({ error: false })
+      )
+      .catch(err => this.setState({ error: true }));
   };
 }
 

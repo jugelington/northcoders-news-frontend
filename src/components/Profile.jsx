@@ -104,7 +104,6 @@ class Profile extends Component {
         api
           .fetchUserSubmissions(this.state.user._id, 'articles')
           .then(articles => {
-            console.log(articles);
             this.setState({
               articles: articles.articles,
               articleLoading: false
