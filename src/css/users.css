@@ -5,11 +5,14 @@
   padding: 1em;
 }
 
+.users-box img {
+  height: 20vh;
+  border-radius: 500px;
+}
+
 .users-container {
   display: flex;
-  overflow-wrap: normal;
-  flex-flow: row;
   flex-wrap: wrap;
-  max-width: 70vw;
+  width: 70%;
   margin: 0 auto;
 }

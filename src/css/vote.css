@@ -1,5 +1,5 @@
 .votebox img {
-  height: 25px;
+  height: 2em;
 }
 
 .votebox button {
@@ -8,5 +8,5 @@
 }
 
 .votebox {
-  margin: 0 auto;
+  display: flex;
 }
