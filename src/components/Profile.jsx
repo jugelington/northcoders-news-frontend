@@ -25,7 +25,7 @@ class Profile extends Component {
             <h1>{this.props.username}</h1> <br />
             <img src={this.state.user.avatar_url} alt="avatar" /> <br />
           </section>
-          {this.state.articlesError ? (
+          {this.state.articlesError === false ? (
             'No Articles Found'
           ) : this.state.articleLoading === false ? (
             <>
@@ -57,7 +57,7 @@ class Profile extends Component {
           ) : (
             <Loading />
           )}
-          {this.state.commentsError ? (
+          {this.state.commentsError === false ? (
             'Comments not found'
           ) : this.state.commentLoading === false ? (
             <>
