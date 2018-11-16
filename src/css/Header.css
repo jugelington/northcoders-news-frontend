@@ -1,4 +1,9 @@
-Header {
-  grid-area: header;
-  font-size: 4vw;
+header {
+  font-size: 30px;
+  background-color: rgb(150, 10, 10);
+  color: white;
+}
+
+header img {
+  height: 40px;
 }

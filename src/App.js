@@ -23,16 +23,17 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Nav
-          user={this.state.user ? this.state.user : null}
-          logout={this.logout}
-        />
+
         <LoginBar
           login={this.login}
           loggedIn={this.state.loggedIn}
           user={this.state.user ? this.state.user : null}
         />
         <Auth user={this.state.user}>
+          <Nav
+            user={this.state.user ? this.state.user : null}
+            logout={this.logout}
+          />
           <Router>
             <Articles path="/" />
             <Articles path="/topics/:topic_slug" />

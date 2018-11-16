@@ -7,7 +7,6 @@ import cooking from '../images/cooking.png';
 import infinity from '../images/infinity.png';
 import write from '../images/write.png';
 import users from '../images/users.png';
-import userProfile from '../images/userProfile.png';
 import logoutImage from '../images/logoutImage.png';
 
 const Nav = ({ user, logout }) => {
@@ -49,14 +48,8 @@ const Nav = ({ user, logout }) => {
           <img src={users} alt="users" />
         </figure>
       </Link>
-      <Link to={user ? `/users/${user.username}` : '/'}>
-        <figure className="nav-buttons">
-          <figcaption>My Profile</figcaption>
-          <img src={userProfile} alt="my profile" />
-        </figure>
-      </Link>
       <Link onClick={logout} to="/">
-        <figure className="nav-buttons">
+        <figure>
           <figcaption>Logout</figcaption>
           <img src={logoutImage} alt="logout" />
         </figure>

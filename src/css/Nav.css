@@ -1,11 +1,9 @@
 nav {
-  border-top: rgba(255, 0, 0, 0.25) 6px dotted;
-  border-bottom: rgba(255, 0, 0, 0.25) 6px dotted;
-  grid-area: nav;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  color: white;
 }
 
 img {
