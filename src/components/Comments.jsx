@@ -70,7 +70,7 @@ class Comments extends Component {
 
   handleDelete = event => {
     api
-      .deleteComment(event.target.value)
+      .deleteItem('comments', event.target.value)
       .catch(err => this.props.navigate('/error'));
     this.setState({
       comments: this.state.comments.filter(

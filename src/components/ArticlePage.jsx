@@ -73,7 +73,9 @@ class ArticlePage extends Component {
   };
 
   handleDelete = event => {
-    api.deleteArticle(event.target.value).then(() => this.props.navigate('/'));
+    api
+      .deleteItem('articles', event.target.value)
+      .then(() => this.props.navigate('/'));
   };
 }
 
