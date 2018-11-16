@@ -1,14 +1,40 @@
-.login-bar {
-  background-color: rgba(41, 41, 41, 0.548);
-
+.user-bar {
+  z-index: 1;
   position: fixed;
   right: 10px;
   margin: 10px;
   border-radius: 40px;
 }
 
+.user-bar p {
+  color: white;
+}
+
 .login-avatar {
   padding: 0;
   border-radius: 50px;
-  height: 40px;
+  height: 50px;
+}
+
+.login-bar {
+  background-color: rgba(41, 41, 41, 0.548);
+  border-radius: 40px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 70px;
+  width: 200px;
+}
+
+@media only screen and (max-width: 600px) {
+  .user-bar {
+    background-color: rgba(41, 41, 41, 0.548);
+  }
+
+  .login-avatar {
+    height: 20px;
+  }
 }

@@ -22,13 +22,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-
         <LoginBar
           login={this.login}
           loggedIn={this.state.loggedIn}
           user={this.state.user ? this.state.user : null}
         />
+        <Header />
+
         <Auth user={this.state.user}>
           <Nav
             user={this.state.user ? this.state.user : null}

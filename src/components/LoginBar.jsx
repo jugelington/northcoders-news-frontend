@@ -8,17 +8,15 @@ class LoginBar extends Component {
   };
   render() {
     return this.props.user !== null ? (
-      <div className="login-bar">
+      <div className="user-bar">
         <Link to={`/users/${this.props.user.username}`}>
-          <p>
-            <img
-              src={this.props.user.avatar_url}
-              alt="my profile"
-              className="login-avatar"
-            />
-            <br />
-            {this.props.user.username}
-          </p>
+          <img
+            src={this.props.user.avatar_url}
+            alt="my profile"
+            className="login-avatar"
+          />
+          <br />
+          <p>{this.props.user.name}</p>
         </Link>
       </div>
     ) : (
