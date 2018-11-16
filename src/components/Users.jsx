@@ -39,7 +39,14 @@ class Users extends Component {
   }
 
   getUsers = () => {
-    api.fetchAllUsers().then(users => this.setState({ users, loading: false }));
+    api
+      .fetchAllUsers()
+      .then(users => this.setState({ users, loading: false }))
+      .catch(() =>
+        this.props.navigate('/error', {
+          state: { status: 404, msg: 'Users not Found' }
+        })
+      );
   };
 }
 

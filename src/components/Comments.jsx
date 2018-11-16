@@ -10,7 +10,8 @@ import DeleteButton from './DeleteButton';
 class Comments extends Component {
   state = {
     comments: [],
-    loading: true
+    loading: true,
+    commentsError: false
   };
 
   render() {
@@ -22,7 +23,12 @@ class Comments extends Component {
           articleId={this.props.article}
           handleCommentPost={this.handleCommentPost}
         />
-        {this.state.loading === false ? (
+        {this.state.commentsError === false ? (
+          <>
+            <br />
+            Be the first to comment!
+          </>
+        ) : this.state.loading === false ? (
           this.state.comments.map(comment => (
             <div
               className="comment"
@@ -62,8 +68,8 @@ class Comments extends Component {
 
   getComments = () => {
     api.fetchArticleComments(this.props.article).then(comments => {
-      this.setState({ comments, loading: false }).catch(err =>
-        this.props.navigate('/error')
+      this.setState({ comments, loading: false }).catch(() =>
+        this.setState({ commentsError: true })
       );
     });
   };
