@@ -23,7 +23,7 @@ class Comments extends Component {
           articleId={this.props.article}
           handleCommentPost={this.handleCommentPost}
         />
-        {this.state.commentsError ? (
+        {this.state.commentsError === true ? (
           <>
             <br />
             Be the first to comment!
@@ -67,11 +67,12 @@ class Comments extends Component {
   }
 
   getComments = () => {
-    api.fetchArticleComments(this.props.article).then(comments => {
-      this.setState({ comments, loading: false, commentsError: false }).catch(
-        () => this.setState({ commentsError: true })
-      );
-    });
+    api
+      .fetchArticleComments(this.props.article)
+      .then(comments => {
+        this.setState({ comments, loading: false, commentsError: false });
+      })
+      .catch(() => this.setState({ commentsError: true }));
   };
 
   handleDelete = event => {
