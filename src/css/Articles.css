@@ -3,9 +3,7 @@ h1 {
 }
 
 .article {
-  /* border: rgba(255, 0, 0, 0.25) 5px dotted; */
   background-color: rgba(41, 41, 41, 0.548);
-  color: white;
   border-radius: 40px;
   width: 75%;
   margin: 1em auto;
@@ -30,7 +28,7 @@ h1 {
 
 .links {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .links h3 {

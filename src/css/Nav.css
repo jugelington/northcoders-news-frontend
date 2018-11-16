@@ -3,11 +3,11 @@ nav {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  color: white;
+  background-color: rgba(41, 41, 41, 0.548);
 }
 
 img {
-  height: 1.5em;
+  height: 3.5em;
   margin-left: 40px;
   margin-right: 40px;
 }
@@ -19,7 +19,7 @@ figure {
 
 figcaption {
   text-decoration: none;
-  color: black;
+  color: white;
   padding-bottom: 5px;
   text-emphasis: none;
 }
