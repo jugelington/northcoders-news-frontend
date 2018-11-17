@@ -6,7 +6,10 @@ import Vote from './Vote';
 import Loading from './Loading';
 import UserDisplay from './UserDisplay';
 import DeleteButton from './DeleteButton';
+import SortArticles from './SortArticles';
+
 import moment from 'moment';
+import _ from 'lodash';
 
 class Comments extends Component {
   state = {
@@ -29,33 +32,37 @@ class Comments extends Component {
             Be the first to comment!
           </>
         ) : this.state.loading === false ? (
-          this.state.comments.map(comment => (
-            <div
-              className="comment"
-              key={comment._id ? comment._id : 'newComment'}
-            >
-              {' '}
-              <p className="comment-body">{comment.body}</p>
-              On: {moment(comment.created_at).format('MMMM DD YYYY')}
-              <div className="comment-votes">
-                <Vote
-                  id="comment"
-                  votes={comment.votes}
-                  _id={comment._id}
-                  section={'comments'}
+          <>
+            <h2>Comments:</h2>
+            <SortArticles alterSort={this.alterSort} />
+            {this.state.comments.map(comment => (
+              <div
+                className="comment"
+                key={comment._id ? comment._id : 'newComment'}
+              >
+                {' '}
+                <p className="comment-body">{comment.body}</p>
+                On: {moment(comment.created_at).format('MMMM DD YYYY')}
+                <div className="comment-votes">
+                  <Vote
+                    id="comment"
+                    votes={comment.votes}
+                    _id={comment._id}
+                    section={'comments'}
+                  />
+                </div>
+                <UserDisplay
+                  username={comment.created_by.username}
+                  avatarUrl={comment.created_by.avatar_url}
+                />
+                <DeleteButton
+                  handleDelete={this.handleDelete}
+                  user={this.props.user}
+                  item={comment}
                 />
               </div>
-              <UserDisplay
-                username={comment.created_by.username}
-                avatarUrl={comment.created_by.avatar_url}
-              />
-              <DeleteButton
-                handleDelete={this.handleDelete}
-                user={this.props.user}
-                item={comment}
-              />
-            </div>
-          ))
+            ))}
+          </>
         ) : (
           <Loading />
         )}
@@ -100,6 +107,16 @@ class Comments extends Component {
       commentsError: false,
       loading: false
     });
+  };
+
+  alterSort = (sort, direction) => {
+    direction === 'descending'
+      ? this.setState({
+          comments: _.sortBy(this.state.comments, [sort]).reverse()
+        })
+      : this.setState({
+          comments: _.sortBy(this.state.comments, [sort])
+        });
   };
 }
 

@@ -3,6 +3,8 @@ import * as api from '../api';
 import Loading from './Loading';
 import { Link } from '@reach/router';
 import '../css/Profile.css';
+import _ from 'lodash';
+import SortArticles from './SortArticles';
 
 class Profile extends Component {
   state = {
@@ -40,20 +42,27 @@ class Profile extends Component {
               <button value="articles" onClick={this.show}>
                 Show Articles
               </button>
-              {this.state.hideArticles !== true &&
-                this.state.articles.map(article => {
-                  return (
-                    <div key={article._id} className="profile-box">
-                      <h3>{article.title}</h3>
-                      <Link to={`/articles/${article._id}`}>
-                        <button>Go To</button>
-                      </Link>{' '}
-                      <br />
-                      Votes: {article.votes} <br />
-                      Comments: {article.comment_count || 0}
-                    </div>
-                  );
-                })}
+              {this.state.hideArticles !== true && (
+                <>
+                  <SortArticles
+                    alterSort={this.alterSort}
+                    category="articles"
+                  />
+                  {this.state.articles.map(article => {
+                    return (
+                      <div key={article._id} className="profile-box">
+                        <h3>{article.title}</h3>
+                        <Link to={`/articles/${article._id}`}>
+                          <button>Go To</button>
+                        </Link>{' '}
+                        <br />
+                        Votes: {article.votes} <br />
+                        Comments: {article.comment_count || 0}
+                      </div>
+                    );
+                  })}{' '}
+                </>
+              )}
             </>
           ) : (
             <Loading />
@@ -63,6 +72,7 @@ class Profile extends Component {
           ) : this.state.commentLoading === false ? (
             <>
               <h2>Comments posted:</h2>
+
               <p>
                 Comments Posted: {this.state.comments.length} <br />
                 Total Votes:{' '}
@@ -73,27 +83,34 @@ class Profile extends Component {
               <button value="comments" onClick={this.show}>
                 Show Comments
               </button>
-              {this.state.hideComments !== true &&
-                this.state.comments.map(comment => {
-                  return (
-                    <div key={comment._id} className="profile-box">
-                      {comment.body}
-                      <br />
-                      <h5>Votes: {comment.votes}</h5>
-                      <h6>
-                        Article:{' '}
-                        {comment.belongs_to
-                          ? comment.belongs_to.title
-                          : 'DELETED'}
-                      </h6>
-                      {comment.belongs_to && (
-                        <Link to={`/articles/${comment.belongs_to._id}`}>
-                          <button>Go To</button>
-                        </Link>
-                      )}
-                    </div>
-                  );
-                })}
+              {this.state.hideComments !== true && (
+                <>
+                  <SortArticles
+                    alterSort={this.alterSort}
+                    category="comments"
+                  />
+                  {this.state.comments.map(comment => {
+                    return (
+                      <div key={comment._id} className="profile-box">
+                        {comment.body}
+                        <br />
+                        <h5>Votes: {comment.votes}</h5>
+                        <h6>
+                          Article:{' '}
+                          {comment.belongs_to
+                            ? comment.belongs_to.title
+                            : 'DELETED'}
+                        </h6>
+                        {comment.belongs_to && (
+                          <Link to={`/articles/${comment.belongs_to._id}`}>
+                            <button>Go To</button>
+                          </Link>
+                        )}
+                      </div>
+                    );
+                  })}{' '}
+                </>
+              )}
             </>
           ) : (
             <Loading />
@@ -134,6 +151,16 @@ class Profile extends Component {
     value === 'comments'
       ? this.setState({ hideComments: !this.state.hideComments })
       : this.setState({ hideArticles: !this.state.hideArticles });
+  };
+
+  alterSort = (sort, direction, category) => {
+    direction === 'descending'
+      ? this.setState({
+          [category]: _.sortBy(this.state[category], [sort]).reverse()
+        })
+      : this.setState({
+          [category]: _.sortBy(this.state[category], [sort])
+        });
   };
 }
 

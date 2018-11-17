@@ -17,7 +17,7 @@ class SortArticles extends Component {
     const { value } = event.target;
     const sort = value.split(' ')[0];
     const direction = value.split(' ')[1];
-    this.props.alterSort(sort, direction);
+    this.props.alterSort(sort, direction, this.props.category);
   };
 }
 
