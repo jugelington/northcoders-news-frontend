@@ -6,7 +6,8 @@ nav {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: rgba(41, 41, 41, 0.7);
+  /* background-color: rgba(41, 41, 41, 0.7); */
+  border-bottom: 1px solid black;
   z-index: 1;
 }
 
