@@ -16,6 +16,10 @@ img {
   margin-right: 40px;
 }
 
+nav img:hover {
+  transform: scale(1.5, 1.5);
+}
+
 figure {
   margin: 0 auto;
   align-content: center;

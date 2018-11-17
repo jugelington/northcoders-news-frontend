@@ -6,7 +6,6 @@
 .votebox h2 {
   display: inline;
   padding: 5px;
-  /* font-size: 2em; */
 }
 
 .votebox button {
@@ -17,4 +16,9 @@
 
 .votebox {
   margin: 10px auto;
+}
+
+.votebox button:hover {
+  transform: scale(1.5, 1.5);
+  transition: 2s;
 }
