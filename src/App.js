@@ -10,7 +10,7 @@ import LoginBar from './components/LoginBar';
 import * as api from './api';
 import Auth from './components/Auth';
 import Profile from './components/Profile';
-import Write from './components/Write';
+import PostArticle from './components/PostArticle';
 import Users from './components/Users';
 import Error from './components/Error';
 
@@ -42,8 +42,8 @@ class App extends Component {
               user={this.state.user ? this.state.user : null}
             />
             <Profile path="/users/:username" />
-            <Write
-              path="/write"
+            <PostArticle
+              path="/postarticle"
               user={this.state.user ? this.state.user : null}
             />
             <Users path="/users" />

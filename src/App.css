@@ -4,11 +4,12 @@
 
 main {
   position: fixed;
-  top: 109px;
+  top: 110px;
   bottom: 35px;
-  border-top: 1px black solid;
   border-bottom: 1px black solid;
   overflow-y: scroll;
+  margin: 0 auto;
+  width: 100%;
 }
 
 body {

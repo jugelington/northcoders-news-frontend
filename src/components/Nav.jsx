@@ -36,7 +36,7 @@ const Nav = ({ user, logout }) => {
           <img src={cooking} alt="cooking" />
         </figure>
       </Link>
-      <Link to="/write">
+      <Link to="/postarticle">
         <figure className="nav-buttons">
           <figcaption>Write Article</figcaption>
           <img src={write} alt="write an article" />

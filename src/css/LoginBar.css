@@ -17,6 +17,7 @@
 }
 
 .login-bar {
+  z-index: 1;
   background-color: rgba(41, 41, 41, 0.548);
   border-radius: 40px;
   position: absolute;

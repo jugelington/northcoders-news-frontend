@@ -95,7 +95,11 @@ class Comments extends Component {
       body: newComment.body
     };
 
-    this.setState({ comments: [fakeComment, ...this.state.comments] });
+    this.setState({
+      comments: [fakeComment, ...this.state.comments],
+      commentsError: false,
+      loading: false
+    });
   };
 }
 

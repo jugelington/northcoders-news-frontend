@@ -8,7 +8,7 @@ class Loading extends Component {
       <div className="loader">
         <Loader
           type="ThreeDots"
-          color="rgba(255, 0, 0, 0.25)"
+          color="rgb(41, 41, 41)"
           height="100"
           width="100"
         />
