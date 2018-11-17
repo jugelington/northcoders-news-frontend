@@ -16,7 +16,8 @@ import Error from './components/Error';
 
 class App extends Component {
   state = {
-    user: null
+    user: null,
+    loginError: false
   };
 
   render() {
@@ -26,6 +27,7 @@ class App extends Component {
           login={this.login}
           loggedIn={this.state.loggedIn}
           user={this.state.user ? this.state.user : null}
+          loginError={this.state.loginError}
         />
         <Header />
 
@@ -56,7 +58,12 @@ class App extends Component {
   }
 
   login = username => {
-    api.fetchUser(username).then(user => this.setState({ user }));
+    api
+      .fetchUser(username)
+      .then(user => this.setState({ user, loginError: false }))
+      .catch(() => {
+        this.setState({ loginError: true });
+      });
   };
 
   logout = () => {
