@@ -15,7 +15,6 @@ class LoginBar extends Component {
             alt="my profile"
             className="login-avatar"
           />
-          <br />
           <p>{this.props.user.name}</p>
         </div>{' '}
       </Link>

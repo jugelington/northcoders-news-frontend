@@ -5,3 +5,10 @@ footer {
   width: 100%;
   height: 35px;
 }
+
+@media only screen and (max-width: 600px) {
+  footer {
+    position: static;
+    /* font-size: 10px; */
+  }
+}

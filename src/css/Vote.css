@@ -1,13 +1,20 @@
 .votebox img {
-  height: 2em;
+  height: 3em;
+  margin: 0 auto;
+}
+
+.votebox h2 {
+  display: inline;
+  padding: 5px;
+  /* font-size: 2em; */
 }
 
 .votebox button {
-  background: none;
   border: none;
+  background: none;
+  width: 60px;
 }
 
 .votebox {
-  display: flex;
-  margin: 0 auto;
+  margin: 10px auto;
 }

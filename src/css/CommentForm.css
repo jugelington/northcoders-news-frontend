@@ -1,7 +1,11 @@
 #comment-form {
   background-color: rgba(41, 41, 41, 0.548);
   border-radius: 40px;
-  width: fit-content;
+  width: 60%;
   padding: 20px;
   margin: 0 auto;
+}
+
+#comment {
+  width: 90%;
 }

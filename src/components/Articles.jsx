@@ -71,12 +71,32 @@ class Articles extends Component {
 
   getArticles = () => {
     this.props.topic_slug
-      ? api.fetchArticlesByTopic(this.props.topic_slug).then(articles => {
-          this.setState({ articles, loading: false });
-        })
-      : api.fetchAllArticles().then(articles => {
-          this.setState({ articles, loading: false });
-        });
+      ? api
+          .fetchArticlesByTopic(this.props.topic_slug)
+          .then(articles => {
+            this.setState({ articles, loading: false });
+          })
+          .catch(() =>
+            this.props.navigate('/error', {
+              state: {
+                status: 404,
+                msg: `We can't find any articles on this topic, sorry!`
+              }
+            })
+          )
+      : api
+          .fetchAllArticles()
+          .then(articles => {
+            this.setState({ articles, loading: false });
+          })
+          .catch(() =>
+            this.props.navigate('/error', {
+              state: {
+                status: 404,
+                msg: `We can't find any articles on this topic, sorry!`
+              }
+            })
+          );
   };
 
   alterSort = (sort, direction) => {

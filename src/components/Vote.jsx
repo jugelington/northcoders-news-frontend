@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import thumbsup from '../images/thumbsup.png';
-import thumbsdown from '../images/thumbsdown.png';
+import tick from '../images/tick.png';
+import cross from '../images/cross.png';
+
 import '../css/Vote.css';
 import * as api from '../api';
 
@@ -15,19 +16,14 @@ class Vote extends Component {
           onClick={() => this.vote('up')}
           disabled={this.state.voteChange === 1}
         >
-          <img src={thumbsup} alt="upvote" />
+          <img src={tick} alt="upvote" />
         </button>
-        {this.props.votes + this.state.voteChange}
+        <h2>{this.props.votes + this.state.voteChange}</h2>
         <button
           onClick={() => this.vote('down')}
           disabled={this.state.voteChange === -1}
         >
-          <img
-            src={thumbsdown}
-            alt="downvote"
-            value={'down'}
-            onClick={this.vote}
-          />
+          <img src={cross} alt="downvote" value={'down'} onClick={this.vote} />
         </button>
       </section>
     );

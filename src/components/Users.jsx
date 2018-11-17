@@ -28,7 +28,7 @@ class Users extends Component {
             })
           ) : (
             <Loading />
-          )}{' '}
+          )}
         </section>
       </main>
     );

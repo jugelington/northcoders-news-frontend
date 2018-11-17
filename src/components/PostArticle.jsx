@@ -5,7 +5,7 @@ class Write extends Component {
   state = {
     title: '',
     body: '',
-    belongs_to: 'football',
+    belongs_to: '',
     error: false
   };
 
@@ -24,6 +24,7 @@ class Write extends Component {
           <br />
           Topic:
           <select id="belongs_to" onChange={this.handleChange}>
+            <option value="">Select a Topic</option>
             <option value="football">Football</option>
             <option value="coding">Coding</option>
             <option value="cooking">Cooking</option>
@@ -42,7 +43,7 @@ class Write extends Component {
               <br />
               <p>
                 Sorry, that didn't work! <br />
-                Please enter a Title and a Body for your article, then try
+                Please enter a Title, Body and Topic for your article, then try
                 again!
               </p>
             </>
