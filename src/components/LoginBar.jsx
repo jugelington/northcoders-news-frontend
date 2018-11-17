@@ -8,8 +8,8 @@ class LoginBar extends Component {
   };
   render() {
     return this.props.user !== null ? (
-      <div className="user-bar">
-        <Link to={`/users/${this.props.user.username}`}>
+      <Link to={`/users/${this.props.user.username}`}>
+        <div className="user-bar">
           <img
             src={this.props.user.avatar_url}
             alt="my profile"
@@ -17,8 +17,8 @@ class LoginBar extends Component {
           />
           <br />
           <p>{this.props.user.name}</p>
-        </Link>
-      </div>
+        </div>{' '}
+      </Link>
     ) : (
       <>
         <form className="login-bar" onSubmit={this.handleSubmit}>

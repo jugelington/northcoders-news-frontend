@@ -3,11 +3,13 @@
   border-radius: 40px;
   margin: 0.5em auto;
   padding: 1em;
+  width: 200px;
 }
 
 .users-box img {
-  height: 20vh;
   border-radius: 500px;
+  margin: 0 auto;
+  height: 150px;
 }
 
 .users-container {
