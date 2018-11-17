@@ -20,8 +20,10 @@ class Articles extends Component {
       <main id="articles-container">
         <h1>
           {this.props.topic_slug
-            ? `Articles on ${this.props.topic_slug}`
-            : 'All Articles'}
+            ? `Articles on ${this.props.topic_slug} (${
+                this.state.articles.length
+              })`
+            : `All Articles (${this.state.articles.length})`}
         </h1>
         <SortArticles alterSort={this.alterSort} />
         {this.state.loading === false ? (

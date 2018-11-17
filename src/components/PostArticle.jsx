@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as api from '../api';
+import '../css/PostArticle.css';
 
 class Write extends Component {
   state = {
@@ -34,7 +35,7 @@ class Write extends Component {
           <textarea
             value={this.state.body}
             onChange={this.handleChange}
-            id="body"
+            id="post-article-area"
           />
           <br />
           <button>Submit</button>

@@ -9,3 +9,9 @@
 #comment {
   width: 90%;
 }
+
+@media only screen and (max-width: 600px) {
+  #comment-form {
+    width: 90%;
+  }
+}

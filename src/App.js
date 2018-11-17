@@ -56,6 +56,19 @@ class App extends Component {
       </div>
     );
   }
+  componentDidMount() {
+    const loginInfo = localStorage.getItem('loginInfo');
+    if (loginInfo) {
+      this.setState(JSON.parse(loginInfo));
+    }
+  }
+  componentDidUpdate() {
+    this.saveState();
+  }
+
+  saveState = () => {
+    localStorage.setItem('loginInfo', JSON.stringify(this.state));
+  };
 
   login = username => {
     api

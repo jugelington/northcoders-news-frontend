@@ -31,6 +31,7 @@ class Profile extends Component {
             <>
               <h2>Articles posted:</h2>
               <p>
+                Articles Posted: {this.state.articles.length} <br />
                 Total Votes:{' '}
                 {this.state.articles.reduce((acc, curr) => {
                   return acc + curr.votes;
@@ -63,6 +64,7 @@ class Profile extends Component {
             <>
               <h2>Comments posted:</h2>
               <p>
+                Comments Posted: {this.state.comments.length} <br />
                 Total Votes:{' '}
                 {this.state.comments.reduce((acc, curr) => {
                   return acc + curr.votes;
