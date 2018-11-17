@@ -5,8 +5,7 @@ import '../css/ArticlePage.css';
 import Comments from './Comments';
 import Vote from './Vote';
 import Loading from './Loading';
-import UserDisplay from './UserDisplay';
-import DeleteButton from './DeleteButton';
+import ArticleSummary from './ArticleSummary';
 
 class ArticlePage extends Component {
   state = {
@@ -18,27 +17,7 @@ class ArticlePage extends Component {
     return (
       <main>
         {this.state.loading === false ? (
-          <div key={article._id} id="articlebox">
-            <h1 className="article-title">{article.title}</h1>
-            <p className="article-body">{article.body}</p>
-            <p className="article-foot">
-              On: {moment(article.created_at).format('MMMM DD YYYY')}
-            </p>{' '}
-            <Vote
-              votes={article.votes}
-              _id={article._id}
-              section={'articles'}
-            />{' '}
-            <UserDisplay
-              username={article.created_by.username}
-              avatarUrl={article.created_by.avatar_url}
-            />
-            <DeleteButton
-              handleDelete={this.handleDelete}
-              user={this.props.user}
-              item={article}
-            />
-          </div>
+          <ArticleSummary article={article} />
         ) : (
           <Loading />
         )}
