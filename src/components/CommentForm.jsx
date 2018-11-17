@@ -4,7 +4,8 @@ import '../css/CommentForm.css';
 
 class CommentForm extends Component {
   state = {
-    body: ''
+    body: '',
+    error: false
   };
 
   render() {
@@ -21,6 +22,15 @@ class CommentForm extends Component {
         />
         <br />
         <button>Comment!</button>
+        {this.state.error && (
+          <>
+            <br />
+            <p>
+              Sorry, that didn't work! <br />
+              You can't submit an empty comment!
+            </p>
+          </>
+        )}
       </form>
     );
   }
@@ -31,9 +41,11 @@ class CommentForm extends Component {
       body: this.state.body,
       created_by: this.props.user._id
     };
-    api.postComment(newComment, this.props.articleId);
-    this.setState({ body: '' });
-    this.props.handleCommentPost(newComment);
+    api.postComment(newComment, this.props.articleId).catch(() => {
+      this.setState({ error: true });
+    });
+    this.state.body !== '' && this.props.handleCommentPost(newComment);
+    this.setState({ body: '', error: false });
   };
 
   handleChange = event => {

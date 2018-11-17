@@ -1,5 +1,5 @@
 footer {
-  background-color: rgba(41, 41, 41, 0.548);
+  background-color: rgba(41, 41, 41, 0.7);
   position: fixed;
   bottom: 0px;
   width: 100%;
@@ -9,6 +9,5 @@ footer {
 @media only screen and (max-width: 600px) {
   footer {
     position: static;
-    /* font-size: 10px; */
   }
 }
