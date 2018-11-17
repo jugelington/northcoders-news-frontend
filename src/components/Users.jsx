@@ -5,7 +5,7 @@ import '../css/Users.css';
 import { Link } from '@reach/router';
 
 class Users extends Component {
-  state = { users: [], loading: true };
+  state = { users: [], articles: [], comments: [], loading: true };
   render() {
     return (
       <main>
@@ -16,10 +16,21 @@ class Users extends Component {
               return (
                 <div key={user._id} className="users-box">
                   <Link className="links" to={`/users/${user.username}`}>
-                    <h6>Username:</h6> {user.username}
+                    Username: {user.username} <br />
+                    Real name: {user.name} <br />
+                    Articles written:{' '}
+                    {
+                      this.state.articles.filter(
+                        article => article.created_by.username === user.username
+                      ).length
+                    }{' '}
                     <br />
-                    <h6>Real name:</h6> {user.name}
-                    <br />
+                    Total article Popularity:{' '}
+                    {this.state.articles.reduce((acc, curr) => {
+                      return curr.created_by.username === user.username
+                        ? (acc += curr.votes)
+                        : acc;
+                    }, 0)}
                     <h6>Avatar:</h6>
                     <img src={user.avatar_url} alt="avatar" />
                   </Link>
@@ -36,6 +47,7 @@ class Users extends Component {
 
   componentDidMount() {
     this.getUsers();
+    this.getArticles();
   }
 
   getUsers = () => {
@@ -47,6 +59,12 @@ class Users extends Component {
           state: { status: 404, msg: 'Users not Found' }
         })
       );
+  };
+
+  getArticles = () => {
+    api.fetchAllArticles().then(articles => {
+      this.setState({ articles });
+    });
   };
 }
 

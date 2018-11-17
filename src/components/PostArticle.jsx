@@ -44,7 +44,7 @@ class Write extends Component {
               <br />
               <p>
                 Sorry, that didn't work! <br />
-                Please enter a Title, Body and Topic for your article, then try
+                Please enter a Title, Topic and Body for your article, then try
                 again!
               </p>
             </>

@@ -4,7 +4,7 @@ import Loading from './Loading';
 import { Link } from '@reach/router';
 import '../css/Profile.css';
 import _ from 'lodash';
-import SortArticles from './SortArticles';
+import Sort from './Sort';
 
 class Profile extends Component {
   state = {
@@ -44,10 +44,7 @@ class Profile extends Component {
               </button>
               {this.state.hideArticles !== true && (
                 <>
-                  <SortArticles
-                    alterSort={this.alterSort}
-                    category="articles"
-                  />
+                  <Sort alterSort={this.alterSort} category="articles" />
                   {this.state.articles.map(article => {
                     return (
                       <div key={article._id} className="profile-box">
@@ -85,10 +82,7 @@ class Profile extends Component {
               </button>
               {this.state.hideComments !== true && (
                 <>
-                  <SortArticles
-                    alterSort={this.alterSort}
-                    category="comments"
-                  />
+                  <Sort alterSort={this.alterSort} category="comments" />
                   {this.state.comments.map(comment => {
                     return (
                       <div key={comment._id} className="profile-box">

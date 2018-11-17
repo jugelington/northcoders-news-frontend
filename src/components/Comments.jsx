@@ -6,7 +6,7 @@ import Vote from './Vote';
 import Loading from './Loading';
 import UserDisplay from './UserDisplay';
 import DeleteButton from './DeleteButton';
-import SortArticles from './SortArticles';
+import Sort from './Sort';
 
 import moment from 'moment';
 import _ from 'lodash';
@@ -34,7 +34,7 @@ class Comments extends Component {
         ) : this.state.loading === false ? (
           <>
             <h2>Comments:</h2>
-            <SortArticles alterSort={this.alterSort} />
+            <Sort alterSort={this.alterSort} />
             {this.state.comments.map(comment => (
               <div
                 className="comment"

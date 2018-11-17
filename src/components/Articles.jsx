@@ -6,7 +6,7 @@ import { Link } from '@reach/router';
 import Vote from './Vote';
 import Loading from './Loading';
 import UserDisplay from './UserDisplay';
-import SortArticles from './SortArticles';
+import Sort from './Sort';
 import _ from 'lodash';
 
 class Articles extends Component {
@@ -25,7 +25,7 @@ class Articles extends Component {
               })`
             : `All Articles (${this.state.articles.length})`}
         </h1>
-        <SortArticles alterSort={this.alterSort} />
+        <Sort alterSort={this.alterSort} />
         {this.state.loading === false ? (
           this.state.articles.map(article => (
             <div className="article" key={article._id}>
