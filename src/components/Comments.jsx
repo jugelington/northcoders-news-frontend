@@ -6,6 +6,7 @@ import Vote from './Vote';
 import Loading from './Loading';
 import UserDisplay from './UserDisplay';
 import DeleteButton from './DeleteButton';
+import moment from 'moment';
 
 class Comments extends Component {
   state = {
@@ -17,7 +18,6 @@ class Comments extends Component {
   render() {
     return (
       <section>
-        <h2>Comments:</h2>
         <CommentForm
           user={this.props.user}
           articleId={this.props.article}
@@ -36,6 +36,7 @@ class Comments extends Component {
             >
               {' '}
               <p className="comment-body">{comment.body}</p>
+              On: {moment(comment.created_at).format('MMMM DD YYYY')}
               <div className="comment-votes">
                 <Vote
                   id="comment"

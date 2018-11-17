@@ -22,7 +22,10 @@ class LoginBar extends Component {
     ) : (
       <>
         <form className="login-bar" onSubmit={this.handleSubmit}>
-          <label htmlFor="username">Username: </label>
+          <label htmlFor="username">
+            Hi there!
+            <br /> Who are you?
+          </label>
           <br />
           <input
             id="username"

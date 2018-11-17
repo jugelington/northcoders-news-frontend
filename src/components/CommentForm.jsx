@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as api from '../api';
-import '../css/Comments.css';
+import '../css/CommentForm.css';
 
 class CommentForm extends Component {
   state = {
@@ -9,7 +9,7 @@ class CommentForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} id="comment-form">
         <label htmlFor="comment">
           Tell the world what you think, {this.props.user.name}!
         </label>

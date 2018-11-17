@@ -5,6 +5,7 @@
   margin: 10px auto;
   display: flex;
   flex-flow: column;
+  padding: 20px;
 }
 
 .comment-body {
