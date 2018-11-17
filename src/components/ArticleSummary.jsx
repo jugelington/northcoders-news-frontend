@@ -3,8 +3,15 @@ import { Link } from '@reach/router';
 import Vote from './Vote';
 import moment from 'moment';
 import UserDisplay from './UserDisplay';
+import DeleteButton from './DeleteButton';
 
-const ArticleSummary = ({ article, frontPage }) => {
+const ArticleSummary = ({
+  article,
+  frontPage,
+  profilePage,
+  user,
+  handleDelete
+}) => {
   return (
     <div className="article" key={article._id}>
       <h3 className="article-title">{article.title}</h3>
@@ -26,16 +33,19 @@ const ArticleSummary = ({ article, frontPage }) => {
           : `0 Comments`}
       </p>
       <div className="article-votes">
-        <Vote votes={article.votes} _id={article._id} section={'articles'} />
+        {!profilePage && (
+          <Vote votes={article.votes} _id={article._id} section={'articles'} />
+        )}
       </div>
-      <UserDisplay
-        username={article.created_by.username}
-        avatarUrl={article.created_by.avatar_url}
-      />
+      {!profilePage && (
+        <UserDisplay
+          username={article.created_by.username}
+          avatarUrl={article.created_by.avatar_url}
+        />
+      )}
+      <DeleteButton user={user} item={article} handleDelete={handleDelete} />
     </div>
   );
 };
-
-ArticleSummary.propTypes = {};
 
 export default ArticleSummary;

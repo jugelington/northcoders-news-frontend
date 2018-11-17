@@ -25,7 +25,13 @@ class Articles extends Component {
         <Sort alterSort={this.alterSort} />
         {this.state.loading === false ? (
           this.state.articles.map(article => (
-            <ArticleSummary article={article} frontPage={true} />
+            <ArticleSummary
+              key={article._id}
+              article={article}
+              frontPage={true}
+              user={this.props.user}
+              handleDelete={this.handleDelete}
+            />
           ))
         ) : (
           <Loading />
@@ -82,6 +88,15 @@ class Articles extends Component {
       : this.setState({
           articles: _.sortBy(this.state.articles, [sort])
         });
+  };
+
+  handleDelete = event => {
+    this.setState({
+      articles: this.state.articles.filter(
+        article => article._id !== event.target.value
+      )
+    });
+    api.deleteItem('articles', event.target.value);
   };
 }
 

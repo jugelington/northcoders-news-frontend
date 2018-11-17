@@ -36,7 +36,7 @@ export const fetchUser = async username => {
 
 export const fetchUserSubmissions = async (userId, category) => {
   const { data } = await axios.get(`${BASE_URL}/users/${userId}/${category}`);
-  return data[category];
+  return data[category] ? data[category] : data;
 };
 
 export const deleteItem = async (collection, id) => {

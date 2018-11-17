@@ -5,6 +5,7 @@ import { Link } from '@reach/router';
 import '../css/Profile.css';
 import _ from 'lodash';
 import Sort from './Sort';
+import ArticleSummary from './ArticleSummary';
 
 class Profile extends Component {
   state = {
@@ -45,19 +46,14 @@ class Profile extends Component {
               {this.state.hideArticles !== true && (
                 <>
                   <Sort alterSort={this.alterSort} category="articles" />
-                  {this.state.articles.map(article => {
-                    return (
-                      <div key={article._id} className="profile-box">
-                        <h3>{article.title}</h3>
-                        <Link to={`/articles/${article._id}`}>
-                          <button>Go To</button>
-                        </Link>{' '}
-                        <br />
-                        Votes: {article.votes} <br />
-                        Comments: {article.comment_count || 0}
-                      </div>
-                    );
-                  })}{' '}
+                  {this.state.articles.map(article => (
+                    <ArticleSummary
+                      article={article}
+                      frontPage={true}
+                      profilePage={true}
+                      user={this.props.user}
+                    />
+                  ))}{' '}
                 </>
               )}
             </>
@@ -123,7 +119,7 @@ class Profile extends Component {
           .fetchUserSubmissions(this.state.user._id, 'articles')
           .then(articles => {
             this.setState({
-              articles: articles.articles,
+              articles: articles,
               articleLoading: false
             });
           })

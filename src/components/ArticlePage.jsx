@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../api';
-import moment from 'moment';
 import '../css/ArticlePage.css';
 import Comments from './Comments';
-import Vote from './Vote';
 import Loading from './Loading';
 import ArticleSummary from './ArticleSummary';
 
@@ -17,7 +15,11 @@ class ArticlePage extends Component {
     return (
       <main>
         {this.state.loading === false ? (
-          <ArticleSummary article={article} />
+          <ArticleSummary
+            article={article}
+            user={this.props.user}
+            handleDelete={this.handleDelete}
+          />
         ) : (
           <Loading />
         )}

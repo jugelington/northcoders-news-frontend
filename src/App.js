@@ -37,13 +37,22 @@ class App extends Component {
             logout={this.logout}
           />
           <Router>
-            <Articles path="/" />
-            <Articles path="/topics/:topic_slug" />
+            <Articles
+              path="/"
+              user={this.state.user ? this.state.user : null}
+            />
+            <Articles
+              path="/topics/:topic_slug"
+              user={this.state.user ? this.state.user : null}
+            />
             <ArticlePage
               path="/articles/:article_id"
               user={this.state.user ? this.state.user : null}
             />
-            <Profile path="/users/:username" />
+            <Profile
+              path="/users/:username"
+              user={this.state.user ? this.state.user : null}
+            />
             <PostArticle
               path="/postarticle"
               user={this.state.user ? this.state.user : null}
