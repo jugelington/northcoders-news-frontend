@@ -35,7 +35,7 @@ class Write extends Component {
           <textarea
             value={this.state.body}
             onChange={this.handleChange}
-            id="post-article-area"
+            id="body"
           />
           <br />
           <button>Submit</button>
@@ -56,6 +56,8 @@ class Write extends Component {
 
   handleChange = event => {
     const { value, id } = event.target;
+    console.log(value);
+
     this.setState({ [id]: value });
   };
 

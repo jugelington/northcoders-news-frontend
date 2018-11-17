@@ -1,5 +1,5 @@
 .comment {
-  background-color: rgba(41, 41, 41, 0.548);
+  border: 1px solid black;
   border-radius: 40px;
   width: 60%;
   margin: 10px auto;

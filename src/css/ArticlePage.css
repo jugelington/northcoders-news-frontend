@@ -1,5 +1,6 @@
 #articlebox {
-  background-color: rgba(41, 41, 41, 0.548);
+  /* background-color: rgba(41, 41, 41, 0.548); */
+  border: 1px solid black;
   height: fit-content;
   border-radius: 40px;
   width: 75%;
