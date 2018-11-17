@@ -16,6 +16,7 @@ class ArticlePage extends Component {
       <main>
         {this.state.loading === false ? (
           <ArticleSummary
+            key={article._id}
             article={article}
             user={this.props.user}
             handleDelete={this.handleDelete}

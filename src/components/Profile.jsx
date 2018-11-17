@@ -48,10 +48,12 @@ class Profile extends Component {
                   <Sort alterSort={this.alterSort} category="articles" />
                   {this.state.articles.map(article => (
                     <ArticleSummary
+                      key={article._id}
                       article={article}
                       frontPage={true}
                       profilePage={true}
                       user={this.props.user}
+                      handleDelete={this.handleDelete}
                     />
                   ))}{' '}
                 </>
@@ -151,6 +153,15 @@ class Profile extends Component {
       : this.setState({
           [category]: _.sortBy(this.state[category], [sort])
         });
+  };
+
+  handleDelete = event => {
+    this.setState({
+      articles: this.state.articles.filter(
+        article => article._id !== event.target.value
+      )
+    });
+    api.deleteItem('articles', event.target.value);
   };
 }
 

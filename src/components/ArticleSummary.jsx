@@ -13,7 +13,7 @@ const ArticleSummary = ({
   handleDelete
 }) => {
   return (
-    <div className="article" key={article._id}>
+    <div className="article">
       <h3 className="article-title">{article.title}</h3>
       <p className="article-body">
         {article.body} <br />
