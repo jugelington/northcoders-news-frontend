@@ -9,14 +9,22 @@ nav {
   z-index: 1;
 }
 
-img {
+.nav-buttons img {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
   height: 2em;
   margin-left: 40px;
   margin-right: 40px;
 }
 
-nav img:hover {
-  transform: scale(1.5, 1.5);
+.nav-buttons:hover {
+  transform: scale(1.1, 1.1);
+  transition: 1s;
+}
+
+img:hover {
+  background: rgba(255, 255, 255, 1);
+  transition: 0.5s;
 }
 
 figure {
@@ -29,11 +37,6 @@ figcaption {
   color: white;
   padding-bottom: 5px;
   text-emphasis: none;
-}
-
-nav button {
-  background: none;
-  border: none;
 }
 
 @media only screen and (max-width: 600px) {

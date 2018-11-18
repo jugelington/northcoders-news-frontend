@@ -19,6 +19,6 @@
 }
 
 .votebox button:hover {
-  transform: scale(1.5, 1.5);
-  transition: 2s;
+  transform: scale(1.1, 1.1);
+  transition: 0.5s;
 }

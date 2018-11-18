@@ -49,7 +49,7 @@ const Nav = ({ user, logout }) => {
         </figure>
       </Link>
       <Link onClick={logout} to="/">
-        <figure>
+        <figure className="nav-buttons">
           <figcaption>Logout</figcaption>
           <img src={logoutImage} alt="logout" />
         </figure>
