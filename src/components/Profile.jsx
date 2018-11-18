@@ -103,7 +103,15 @@ class Profile extends Component {
     );
   }
 
+  componentDidUpdate(prevProps) {
+    this.props.username !== prevProps.username && this.getUserInfo();
+  }
+
   componentDidMount() {
+    this.getUserInfo();
+  }
+
+  getUserInfo = () => {
     api
       .fetchUser(this.props.username)
       .then(user => this.setState({ user }))
@@ -127,7 +135,7 @@ class Profile extends Component {
           state: { status: 404, msg: 'User Not Found' }
         })
       );
-  }
+  };
 
   show = event => {
     const { value } = event.target;
