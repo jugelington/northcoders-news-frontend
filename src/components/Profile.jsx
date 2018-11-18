@@ -3,7 +3,7 @@ import * as api from '../api';
 import Loading from './Loading';
 import '../css/Profile.css';
 import _ from 'lodash';
-import Sort from './Sort';
+import SortItems from './SortItems';
 import ArticleSummary from './ArticleSummary';
 import CommentSummary from './CommentSummary';
 
@@ -47,7 +47,7 @@ class Profile extends Component {
             {this.state.hideArticles !== true && (
               <>
                 <br />
-                <Sort alterSort={this.alterSort} category="articles" />
+                <SortItems alterSort={this.alterSort} category="articles" />
                 {this.state.articles.map(article => (
                   <ArticleSummary
                     key={article._id}
@@ -82,7 +82,7 @@ class Profile extends Component {
             {this.state.hideComments !== true && (
               <>
                 <br />
-                <Sort alterSort={this.alterSort} category="comments" />
+                <SortItems alterSort={this.alterSort} category="comments" />
                 {this.state.comments.map(comment => (
                   <CommentSummary
                     key={comment._id}

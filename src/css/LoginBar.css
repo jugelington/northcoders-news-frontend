@@ -21,7 +21,6 @@
 
 .login-bar {
   z-index: 1;
-  /* background-color: rgba(41, 41, 41, 0.548); */
   border-radius: 40px;
   position: absolute;
   top: 0;
@@ -35,7 +34,6 @@
 
 @media only screen and (max-width: 600px) {
   .user-bar {
-    /* background-color: rgba(41, 41, 41, 0.7); */
     position: static;
     width: 100%;
     border-radius: 0;

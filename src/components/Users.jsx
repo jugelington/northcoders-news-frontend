@@ -16,11 +16,13 @@ class Users extends Component {
         {this.state.loading ? (
           <Loading />
         ) : (
-          <section className="users-container">
-            {this.state.users.map(user => (
-              <UserSummary user={user} key={user._id} />
-            ))}
-          </section>
+          <>
+            <section className="users-container">
+              {this.state.users.map(user => (
+                <UserSummary user={user} key={user._id} />
+              ))}
+            </section>
+          </>
         )}
       </main>
     );

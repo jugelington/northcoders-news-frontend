@@ -3,7 +3,7 @@ import * as api from '../api';
 import '../css/Comments.css';
 import CommentForm from './CommentForm';
 import Loading from './Loading';
-import Sort from './Sort';
+import SortItems from './SortItems';
 import _ from 'lodash';
 import CommentSummary from './CommentSummary';
 
@@ -30,7 +30,7 @@ class Comments extends Component {
         ) : this.state.loading === false ? (
           <>
             <h2>Comments:</h2>
-            <Sort alterSort={this.alterSort} />
+            <SortItems alterSort={this.alterSort} />
             {this.state.comments.map(comment => (
               <CommentSummary
                 key={comment._id}

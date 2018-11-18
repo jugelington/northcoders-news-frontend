@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../css/Articles.css';
 import * as api from '../api';
 import Loading from './Loading';
-import Sort from './Sort';
+import SortItems from './SortItems';
 import _ from 'lodash';
 import ArticleSummary from './ArticleSummary';
 
@@ -22,7 +22,7 @@ class Articles extends Component {
               })`
             : `All Articles (${this.state.articles.length})`}
         </h1>
-        <Sort alterSort={this.alterSort} />
+        <SortItems alterSort={this.alterSort} />
         {this.state.loading === false ? (
           this.state.articles.map(article => (
             <ArticleSummary

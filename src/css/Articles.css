@@ -3,7 +3,6 @@ h1 {
 }
 
 .article {
-  /* background-color: rgba(41, 41, 41, 0.548); */
   border: 1px solid black;
   border-radius: 40px;
   width: 75%;
@@ -24,7 +23,6 @@ h1 {
 }
 
 .article-votes {
-  /* padding-top: 1em; */
   margin: 0 auto;
 }
 
