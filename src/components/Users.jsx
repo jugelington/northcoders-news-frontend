@@ -16,9 +16,7 @@ class Users extends Component {
           <Loading />
         ) : (
           this.state.users.map(user => (
-            <div className="users-box">
-              <UserSummary user={user} key={user._id} />
-            </div>
+            <UserSummary user={user} key={user._id} />
           ))
         )}
       </main>

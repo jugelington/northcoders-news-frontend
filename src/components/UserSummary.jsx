@@ -10,11 +10,15 @@ class UserSummary extends Component {
     return !this.state.articles || !this.state.comments ? (
       <Loading />
     ) : (
-      <Link className="links" to={`/users/${this.state.username}`}>
+      <section className="users-box">
         <h3>
           {this.state.name} <br />({this.state.username})
         </h3>
         <img src={this.state.avatar_url} alt="avatar" />
+        <br />
+        <Link className="links" to={`/users/${this.state.username}`}>
+          <button>Profile</button>
+        </Link>
         <h4>Articles</h4>
         Total Written: {this.state.articles.length} <br />
         Total Popularity:{' '}
@@ -23,7 +27,7 @@ class UserSummary extends Component {
         Total written: {this.state.comments.length} <br />
         Total Popularity:{' '}
         {this.state.comments.reduce((acc, curr) => (acc += curr.votes), 0)}
-      </Link>
+      </section>
     );
   }
 
