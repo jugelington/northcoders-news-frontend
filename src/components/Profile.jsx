@@ -22,84 +22,83 @@ class Profile extends Component {
 
   render() {
     return (
-      <>
-        <main>
-          <section className="avatar-holder">
-            <h1>{this.props.username}</h1> <br />
-            <img src={this.state.user.avatar_url} alt="avatar" /> <br />
-          </section>
-          {this.state.articlesError ? (
-            'No Articles Found'
-          ) : this.state.articleLoading === false ? (
-            <>
-              <h2>Articles posted:</h2>
-              <p>
-                Articles Posted: {this.state.articles.length} <br />
-                Total Votes:{' '}
-                {this.state.articles.reduce((acc, curr) => {
-                  return acc + curr.votes;
-                }, 0)}
-              </p>
-              <button value="articles" onClick={this.show}>
-                Show Articles
-              </button>
-              {this.state.hideArticles !== true && (
-                <>
-                  <br />
-                  <Sort alterSort={this.alterSort} category="articles" />
-                  {this.state.articles.map(article => (
-                    <ArticleSummary
-                      key={article._id}
-                      article={article}
-                      frontPage={true}
-                      profilePage={true}
-                      user={this.props.user}
-                      handleDelete={this.handleDelete}
-                    />
-                  ))}{' '}
-                </>
-              )}
-            </>
-          ) : (
-            <Loading />
-          )}
-          {this.state.commentsError ? (
-            'Comments not found'
-          ) : this.state.commentLoading === false ? (
-            <>
-              <h2>Comments posted:</h2>
-
-              <p>
-                Comments Posted: {this.state.comments.length} <br />
-                Total Votes:{' '}
-                {this.state.comments.reduce((acc, curr) => {
-                  return acc + curr.votes;
-                }, 0)}
-              </p>
-              <button value="comments" onClick={this.show}>
-                Show Comments
-              </button>
-              {this.state.hideComments !== true && (
-                <>
-                  <br />
-                  <Sort alterSort={this.alterSort} category="comments" />
-                  {this.state.comments.map(comment => (
-                    <CommentSummary
-                      key={comment._id}
-                      comment={comment}
-                      user={this.props.user}
-                      handleDelete={this.handleDelete}
-                      profilePage={true}
-                    />
-                  ))}{' '}
-                </>
-              )}
-            </>
-          ) : (
-            <Loading />
-          )}
-        </main>
-      </>
+      <main>
+        <h1>Profile</h1>
+        <section className="avatar-holder">
+          <h2>{this.state.user.name}</h2>
+          <h2>({this.state.user.username})</h2>
+          <img src={this.state.user.avatar_url} alt="avatar" />
+        </section>
+        {this.state.articlesError ? (
+          'No Articles Found'
+        ) : this.state.articleLoading === false ? (
+          <>
+            <h3>Articles posted:</h3>
+            <p>
+              Articles Posted: {this.state.articles.length} <br />
+              Total Votes:{' '}
+              {this.state.articles.reduce((acc, curr) => {
+                return acc + curr.votes;
+              }, 0)}
+            </p>
+            <button value="articles" onClick={this.show}>
+              Show Articles
+            </button>
+            {this.state.hideArticles !== true && (
+              <>
+                <br />
+                <Sort alterSort={this.alterSort} category="articles" />
+                {this.state.articles.map(article => (
+                  <ArticleSummary
+                    key={article._id}
+                    article={article}
+                    frontPage={true}
+                    profilePage={true}
+                    user={this.props.user}
+                    handleDelete={this.handleDelete}
+                  />
+                ))}{' '}
+              </>
+            )}
+          </>
+        ) : (
+          <Loading />
+        )}
+        {this.state.commentsError ? (
+          'Comments not found'
+        ) : this.state.commentLoading === false ? (
+          <>
+            <h3>Comments posted:</h3>
+            <p>
+              Comments Posted: {this.state.comments.length} <br />
+              Total Votes:{' '}
+              {this.state.comments.reduce((acc, curr) => {
+                return acc + curr.votes;
+              }, 0)}
+            </p>
+            <button value="comments" onClick={this.show}>
+              Show Comments
+            </button>
+            {this.state.hideComments !== true && (
+              <>
+                <br />
+                <Sort alterSort={this.alterSort} category="comments" />
+                {this.state.comments.map(comment => (
+                  <CommentSummary
+                    key={comment._id}
+                    comment={comment}
+                    user={this.props.user}
+                    handleDelete={this.handleDelete}
+                    profilePage={true}
+                  />
+                ))}{' '}
+              </>
+            )}
+          </>
+        ) : (
+          <Loading />
+        )}
+      </main>
     );
   }
 

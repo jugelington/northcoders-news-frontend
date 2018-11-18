@@ -11,13 +11,16 @@ class Users extends Component {
   };
   render() {
     return (
-      <main className="users-container">
+      <main>
+        <h1>Users</h1>
         {this.state.loading ? (
           <Loading />
         ) : (
-          this.state.users.map(user => (
-            <UserSummary user={user} key={user._id} />
-          ))
+          <section className="users-container">
+            {this.state.users.map(user => (
+              <UserSummary user={user} key={user._id} />
+            ))}
+          </section>
         )}
       </main>
     );

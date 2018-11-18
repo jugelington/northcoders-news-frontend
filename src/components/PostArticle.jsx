@@ -13,8 +13,9 @@ class Write extends Component {
   render() {
     return (
       <main>
+        <h1>Write Article</h1>
         <form onSubmit={this.handleSubmit} id="post-article-area">
-          <h1>What do you want to say?</h1>
+          <h2>What do you want to say?</h2>
           Title:{' '}
           <input
             id="title"
