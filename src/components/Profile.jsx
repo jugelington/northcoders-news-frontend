@@ -45,6 +45,7 @@ class Profile extends Component {
               </button>
               {this.state.hideArticles !== true && (
                 <>
+                  <br />
                   <Sort alterSort={this.alterSort} category="articles" />
                   {this.state.articles.map(article => (
                     <ArticleSummary
@@ -80,6 +81,7 @@ class Profile extends Component {
               </button>
               {this.state.hideComments !== true && (
                 <>
+                  <br />
                   <Sort alterSort={this.alterSort} category="comments" />
                   {this.state.comments.map(comment => (
                     <CommentSummary
