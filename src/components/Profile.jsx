@@ -28,7 +28,7 @@ class Profile extends Component {
             <h1>{this.props.username}</h1> <br />
             <img src={this.state.user.avatar_url} alt="avatar" /> <br />
           </section>
-          {this.state.articlesError === false ? (
+          {this.state.articlesError ? (
             'No Articles Found'
           ) : this.state.articleLoading === false ? (
             <>
@@ -63,7 +63,7 @@ class Profile extends Component {
           ) : (
             <Loading />
           )}
-          {this.state.commentsError === false ? (
+          {this.state.commentsError ? (
             'Comments not found'
           ) : this.state.commentLoading === false ? (
             <>
@@ -121,13 +121,20 @@ class Profile extends Component {
           .then(articles => {
             this.setState({
               articles: articles,
-              articleLoading: false
+              articleLoading: false,
+              articlesError: false
             });
           })
           .catch(this.setState({ articlesError: true }));
         api
           .fetchUserSubmissions(this.state.user._id, 'comments')
-          .then(comments => this.setState({ comments, commentLoading: false }))
+          .then(comments =>
+            this.setState({
+              comments,
+              commentLoading: false,
+              commentsError: false
+            })
+          )
           .catch(this.setState({ commentsError: true }));
       })
       .catch(() =>
