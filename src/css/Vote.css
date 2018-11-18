@@ -1,21 +1,16 @@
+.votebox h2 {
+  display: inline;
+}
+
 .votebox img {
   height: 3em;
   margin: 0 auto;
-}
-
-.votebox h2 {
-  display: inline;
-  padding: 5px;
 }
 
 .votebox button {
   border: none;
   background: none;
   width: 60px;
-}
-
-.votebox {
-  margin: 10px auto;
 }
 
 .votebox button:hover {

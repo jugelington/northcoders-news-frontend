@@ -31,12 +31,18 @@ const ArticleSummary = ({
           : article.comment_count
           ? `${article.comment_count} comments`
           : `0 Comments`}
+        <div className="article-votes">
+          {!profilePage ? (
+            <Vote
+              votes={article.votes}
+              _id={article._id}
+              section={'articles'}
+            />
+          ) : (
+            `Votes: ${article.votes}`
+          )}
+        </div>{' '}
       </p>
-      <div className="article-votes">
-        {!profilePage && (
-          <Vote votes={article.votes} _id={article._id} section={'articles'} />
-        )}
-      </div>
       {!profilePage && (
         <UserDisplay
           username={article.created_by.username}

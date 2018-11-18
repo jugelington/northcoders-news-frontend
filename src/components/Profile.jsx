@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import * as api from '../api';
 import Loading from './Loading';
-import { Link } from '@reach/router';
 import '../css/Profile.css';
 import _ from 'lodash';
 import Sort from './Sort';
 import ArticleSummary from './ArticleSummary';
+import CommentSummary from './CommentSummary';
 
 class Profile extends Component {
   state = {
@@ -81,26 +81,15 @@ class Profile extends Component {
               {this.state.hideComments !== true && (
                 <>
                   <Sort alterSort={this.alterSort} category="comments" />
-                  {this.state.comments.map(comment => {
-                    return (
-                      <div key={comment._id} className="profile-box">
-                        {comment.body}
-                        <br />
-                        <h5>Votes: {comment.votes}</h5>
-                        <h6>
-                          Article:{' '}
-                          {comment.belongs_to
-                            ? comment.belongs_to.title
-                            : 'DELETED'}
-                        </h6>
-                        {comment.belongs_to && (
-                          <Link to={`/articles/${comment.belongs_to._id}`}>
-                            <button>Go To</button>
-                          </Link>
-                        )}
-                      </div>
-                    );
-                  })}{' '}
+                  {this.state.comments.map(comment => (
+                    <CommentSummary
+                      key={comment._id}
+                      comment={comment}
+                      user={this.props.user}
+                      handleDelete={this.handleDelete}
+                      profilePage={true}
+                    />
+                  ))}{' '}
                 </>
               )}
             </>
