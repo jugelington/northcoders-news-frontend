@@ -17,10 +17,14 @@ nav {
   margin-right: 40px;
 }
 
-img:hover {
+.nav-buttons img:hover {
   transform: scale(1.1, 1.1);
   background: rgba(255, 255, 255, 1);
   transition: 0.5s;
+}
+
+.nav-buttons img:active {
+  transform: scale(1.5, 1.5);
 }
 
 figure {
