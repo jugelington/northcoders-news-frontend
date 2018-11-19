@@ -26,7 +26,7 @@ const ArticleSummary = ({
       </p>
       {moment(article.created_at).format('MMMM DD YYYY')}
       <br />
-      {!frontPage && article.comment_count
+      {!frontPage || article.comment_count
         ? `${article.comment_count} comments`
         : `0 Comments`}
       <div className="article-votes">

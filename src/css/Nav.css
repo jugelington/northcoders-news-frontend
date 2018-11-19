@@ -36,7 +36,6 @@ figcaption {
   text-decoration: none;
   color: white;
   padding-bottom: 5px;
-  text-emphasis: none;
 }
 
 @media only screen and (max-width: 600px) {
