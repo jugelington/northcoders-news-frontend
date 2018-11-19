@@ -15,27 +15,29 @@ class Comments extends Component {
   };
 
   render() {
+    const { user, article } = this.props;
+    const { commentsError, loading, comments } = this.state;
     return (
       <section>
         <CommentForm
-          user={this.props.user}
-          articleId={this.props.article}
+          user={user}
+          articleId={article}
           handleCommentPost={this.handleCommentPost}
         />
-        {this.state.commentsError === true ? (
+        {commentsError === true ? (
           <>
             <br />
             Be the first to comment!
           </>
-        ) : this.state.loading === false ? (
+        ) : loading === false ? (
           <>
             <h2>Comments:</h2>
             <SortItems alterSort={this.alterSort} />
-            {this.state.comments.map(comment => (
+            {comments.map(comment => (
               <CommentSummary
                 key={comment._id}
                 comment={comment}
-                user={this.props.user}
+                user={user}
                 handleDelete={this.handleDelete}
               />
             ))}
@@ -52,8 +54,9 @@ class Comments extends Component {
   }
 
   getComments = () => {
+    const { article } = this.props;
     api
-      .fetchArticleComments(this.props.article)
+      .fetchArticleComments(article)
       .then(comments => {
         this.setState({ comments, loading: false, commentsError: false });
       })
@@ -61,21 +64,21 @@ class Comments extends Component {
   };
 
   handleDelete = event => {
+    const { comments } = this.state;
     api
       .deleteItem('comments', event.target.value)
       .catch(err => this.props.navigate('/error'));
     this.setState({
-      comments: this.state.comments.filter(
-        comment => comment._id !== event.target.value
-      )
+      comments: comments.filter(comment => comment._id !== event.target.value)
     });
   };
 
   handleCommentPost = newComment => {
+    const { user } = this.props;
     const fakeComment = {
       _id: 'newComment',
       votes: 0,
-      created_by: this.props.user,
+      created_by: user,
       body: newComment.body
     };
 
@@ -87,12 +90,13 @@ class Comments extends Component {
   };
 
   alterSort = (sort, direction) => {
+    const { comments } = this.state;
     direction === 'descending'
       ? this.setState({
-          comments: _.sortBy(this.state.comments, [sort]).reverse()
+          comments: _.sortBy(comments, [sort]).reverse()
         })
       : this.setState({
-          comments: _.sortBy(this.state.comments, [sort])
+          comments: _.sortBy(comments, [sort])
         });
   };
 }

@@ -9,20 +9,18 @@ class CommentForm extends Component {
   };
 
   render() {
+    const { user } = this.props;
+    const { body, error } = this.state;
     return (
       <form onSubmit={this.handleSubmit} id="comment-form">
         <label htmlFor="comment">
-          Tell the world what you think, {this.props.user.name}!
+          Tell the world what you think, {user.name}!
         </label>
         <br />
-        <textarea
-          id="comment"
-          onChange={this.handleChange}
-          value={this.state.body}
-        />
+        <textarea id="comment" onChange={this.handleChange} value={body} />
         <br />
         <button>Comment!</button>
-        {this.state.error && (
+        {error && (
           <>
             <br />
             <p>
@@ -36,15 +34,18 @@ class CommentForm extends Component {
   }
 
   handleSubmit = event => {
+    const { body } = this.state;
+    const { user, articleId, handleCommentPost } = this.props;
+
     event.preventDefault();
     let newComment = {
-      body: this.state.body,
-      created_by: this.props.user._id
+      body: body,
+      created_by: user._id
     };
-    api.postComment(newComment, this.props.articleId).catch(() => {
+    api.postComment(newComment, articleId).catch(() => {
       this.setState({ error: true });
     });
-    this.state.body !== '' && this.props.handleCommentPost(newComment);
+    this.state.body !== '' && handleCommentPost(newComment);
     this.setState({ body: '', error: false });
   };
 

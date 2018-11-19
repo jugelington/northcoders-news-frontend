@@ -11,10 +11,11 @@ class ArticlePage extends Component {
     loading: true
   };
   render() {
-    const { article } = this.state;
+    const { article, loading } = this.state;
+    const { user } = this.props;
     return (
       <main>
-        {this.state.loading === false ? (
+        {loading === false ? (
           <ArticleSummary
             key={article._id}
             article={article}
@@ -24,8 +25,8 @@ class ArticlePage extends Component {
         ) : (
           <Loading />
         )}
-        {this.state.loading === false ? (
-          <Comments article={article._id} user={this.props.user} />
+        {loading === false ? (
+          <Comments article={article._id} user={user} />
         ) : (
           <Loading />
         )}
@@ -42,8 +43,9 @@ class ArticlePage extends Component {
   }
 
   getArticle = () => {
+    const { article_id } = this.props;
     api
-      .fetchArticleById(this.props.article_id)
+      .fetchArticleById(article_id)
       .then(article => {
         this.setState({ article, loading: false });
       })

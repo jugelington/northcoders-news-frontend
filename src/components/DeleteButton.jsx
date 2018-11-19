@@ -1,23 +1,16 @@
-import React, { Component } from 'react';
-import '../css/DeleteButton.css';
+import React from 'react';
 
-class DeleteButton extends Component {
-  render() {
-    return (
-      this.props.user._id ===
-        (this.props.item.created_by._id
-          ? this.props.item.created_by._id
-          : this.props.item.created_by) && (
-        <button
-          onClick={this.props.handleDelete}
-          value={this.props.item._id}
-          className="delete-button"
-        >
+const DeleteButton = ({ user, item, handleDelete }) => {
+  return (
+    <div className="delete-button">
+      {user._id ===
+        (item.created_by._id ? item.created_by._id : item.created_by) && (
+        <button onClick={handleDelete} value={item._id}>
           Delete
         </button>
-      )
-    );
-  }
-}
+      )}
+    </div>
+  );
+};
 
 export default DeleteButton;

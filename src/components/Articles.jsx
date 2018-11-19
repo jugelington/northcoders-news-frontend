@@ -13,23 +13,23 @@ class Articles extends Component {
   };
 
   render() {
+    const { topic_slug, user } = this.props;
+    const { articles, loading } = this.state;
     return (
       <main id="articles-container">
         <h1>
-          {this.props.topic_slug
-            ? `Articles on ${this.props.topic_slug} (${
-                this.state.articles.length
-              })`
-            : `All Articles (${this.state.articles.length})`}
+          {topic_slug
+            ? `Articles on ${topic_slug} (${articles.length})`
+            : `All Articles (${articles.length})`}
         </h1>
         <SortItems alterSort={this.alterSort} />
-        {this.state.loading === false ? (
-          this.state.articles.map(article => (
+        {loading === false ? (
+          articles.map(article => (
             <ArticleSummary
               key={article._id}
               article={article}
               frontPage={true}
-              user={this.props.user}
+              user={user}
               handleDelete={this.handleDelete}
             />
           ))
@@ -51,9 +51,11 @@ class Articles extends Component {
   }
 
   getArticles = () => {
-    this.props.topic_slug
+    const { topic_slug } = this.props;
+
+    topic_slug
       ? api
-          .fetchArticlesByTopic(this.props.topic_slug)
+          .fetchArticlesByTopic(topic_slug)
           .then(articles => {
             this.setState({ articles, loading: false });
           })
@@ -81,20 +83,21 @@ class Articles extends Component {
   };
 
   alterSort = (sort, direction) => {
+    const { articles } = this.state;
     direction === 'descending'
       ? this.setState({
-          articles: _.sortBy(this.state.articles, [sort]).reverse()
+          articles: _.sortBy(articles, [sort]).reverse()
         })
       : this.setState({
-          articles: _.sortBy(this.state.articles, [sort])
+          articles: _.sortBy(articles, [sort])
         });
   };
 
   handleDelete = event => {
+    const { articles } = this.state;
+
     this.setState({
-      articles: this.state.articles.filter(
-        article => article._id !== event.target.value
-      )
+      articles: articles.filter(article => article._id !== event.target.value)
     });
     api.deleteItem('articles', event.target.value);
   };
