@@ -175,16 +175,13 @@ class Profile extends Component {
         });
   };
 
-  handleDelete = ({
-    event: {
-      target: { value }
-    }
-  }) => {
-    const { articles } = this.state;
+  handleDelete = (event, category) => {
+    const { value } = event.target;
     this.setState({
-      articles: articles.filter(article => article._id !== value)
+      [category]: this.state[category].filter(element => element._id !== value)
     });
-    api.deleteItem('articles', value);
+
+    api.deleteItem(category, value);
   };
 }
 

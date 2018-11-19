@@ -49,7 +49,12 @@ const ArticleSummary = ({
           avatarUrl={article.created_by.avatar_url}
         />
       )}
-      <DeleteButton user={user} item={article} handleDelete={handleDelete} />
+      <DeleteButton
+        user={user}
+        item={article}
+        handleDelete={handleDelete}
+        category="articles"
+      />
     </div>
   );
 };

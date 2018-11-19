@@ -35,7 +35,12 @@ const CommentSummary = ({ comment, user, handleDelete, profilePage }) => {
             </Link>
           )
         : 'Article Deleted'}
-      <DeleteButton handleDelete={handleDelete} user={user} item={comment} />
+      <DeleteButton
+        handleDelete={handleDelete}
+        user={user}
+        item={comment}
+        category="comments"
+      />
     </div>
   );
 };
