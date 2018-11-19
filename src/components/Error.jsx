@@ -1,19 +1,22 @@
-import React, { Component } from 'react';
-import '../css/Error.css';
+import React from 'react';
 
-class Error extends Component {
-  render() {
-    return (
-      <main>
-        <div id="error-box">
-          <h2>
-            Error - {this.props.location.state.status} <br />
-            {this.props.location.state.msg}
-          </h2>
-        </div>
-      </main>
-    );
+const Error = ({
+  location: {
+    state: { status, msg }
   }
-}
+}) => {
+  return (
+    <main>
+      <div id="error-box">
+        <h2>
+          Error - {status} <br />
+          {msg}
+        </h2>
+      </div>
+    </main>
+  );
+};
+
+Error.propTypes = {};
 
 export default Error;
