@@ -6,6 +6,7 @@ import Loading from './Loading';
 import SortItems from './SortItems';
 import _ from 'lodash';
 import CommentSummary from './CommentSummary';
+import PropTypes from 'prop-types';
 
 class Comments extends Component {
   state = {
@@ -100,5 +101,10 @@ class Comments extends Component {
         });
   };
 }
+
+Comments.propTypes = {
+  user: PropTypes.object,
+  article: PropTypes.string
+};
 
 export default Comments;

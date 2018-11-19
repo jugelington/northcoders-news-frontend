@@ -8,6 +8,7 @@ import infinity from '../images/infinity.png';
 import write from '../images/write.png';
 import users from '../images/users.png';
 import logoutImage from '../images/logoutImage.png';
+import PropTypes from 'prop-types';
 
 const Nav = ({ logout }) => {
   return (
@@ -56,6 +57,10 @@ const Nav = ({ logout }) => {
       </Link>
     </nav>
   );
+};
+
+Nav.propTypes = {
+  logout: PropTypes.func
 };
 
 export default Nav;

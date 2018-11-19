@@ -3,6 +3,7 @@ import Loading from './Loading';
 import * as api from '../api';
 import { Link } from '@reach/router';
 import '../css/Users.css';
+import PropTypes from 'prop-types';
 
 class UserSummary extends Component {
   state = { articles: [], comments: [] };
@@ -48,5 +49,9 @@ class UserSummary extends Component {
       .then(comments => this.setState({ comments }));
   };
 }
+
+UserSummary.propTypes = {
+  user: PropTypes.object
+};
 
 export default UserSummary;

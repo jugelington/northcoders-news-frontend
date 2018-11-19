@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Error = ({
   location: {
@@ -17,6 +18,8 @@ const Error = ({
   );
 };
 
-Error.propTypes = {};
+Error.propTypes = {
+  location: PropTypes.object
+};
 
 export default Error;

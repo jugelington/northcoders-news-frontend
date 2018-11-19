@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../api';
 import '../css/CommentForm.css';
+import PropTypes from 'prop-types';
 
 class CommentForm extends Component {
   state = {
@@ -54,4 +55,9 @@ class CommentForm extends Component {
   };
 }
 
+CommentForm.propTypes = {
+  user: PropTypes.object,
+  articleId: PropTypes.string,
+  handleCommentPost: PropTypes.func
+};
 export default CommentForm;

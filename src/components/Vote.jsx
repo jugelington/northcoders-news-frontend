@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import tick from '../images/tick.png';
 import cross from '../images/cross.png';
-
 import '../css/Vote.css';
 import * as api from '../api';
+import PropTypes from 'prop-types';
 
 class Vote extends Component {
   state = {
@@ -34,5 +34,11 @@ class Vote extends Component {
     });
   };
 }
+
+Vote.propTypes = {
+  section: PropTypes.string,
+  _id: PropTypes.string,
+  votes: PropTypes.number
+};
 
 export default Vote;

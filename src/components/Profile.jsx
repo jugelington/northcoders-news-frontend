@@ -6,6 +6,7 @@ import _ from 'lodash';
 import SortItems from './SortItems';
 import ArticleSummary from './ArticleSummary';
 import CommentSummary from './CommentSummary';
+import PropTypes from 'prop-types';
 
 class Profile extends Component {
   state = {
@@ -184,5 +185,10 @@ class Profile extends Component {
     api.deleteItem(category, value);
   };
 }
+
+Profile.propTypes = {
+  username: PropTypes.string,
+  user: PropTypes.object
+};
 
 export default Profile;

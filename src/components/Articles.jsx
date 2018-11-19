@@ -5,6 +5,7 @@ import Loading from './Loading';
 import SortItems from './SortItems';
 import _ from 'lodash';
 import ArticleSummary from './ArticleSummary';
+import PropTypes from 'prop-types';
 
 class Articles extends Component {
   state = {
@@ -102,5 +103,10 @@ class Articles extends Component {
     api.deleteItem('articles', event.target.value);
   };
 }
+
+Articles.propTypes = {
+  topic_slug: PropTypes.string,
+  user: PropTypes.object
+};
 
 export default Articles;

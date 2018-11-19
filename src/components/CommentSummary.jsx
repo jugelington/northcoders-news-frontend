@@ -4,6 +4,7 @@ import DeleteButton from './DeleteButton';
 import Vote from './Vote';
 import moment from 'moment';
 import { Link } from '@reach/router';
+import PropTypes from 'prop-types';
 
 const CommentSummary = ({ comment, user, handleDelete, profilePage }) => {
   return (
@@ -45,6 +46,13 @@ const CommentSummary = ({ comment, user, handleDelete, profilePage }) => {
       )}
     </div>
   );
+};
+
+CommentSummary.propTypes = {
+  comment: PropTypes.object,
+  user: PropTypes.object,
+  handleDelete: PropTypes.func,
+  profilePage: PropTypes.bool
 };
 
 export default CommentSummary;

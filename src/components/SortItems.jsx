@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const handleChange = (event, alterSort, category) => {
   const { value } = event.target;
@@ -17,5 +18,10 @@ const SortItems = ({ alterSort, category }) => {
       <option value="created_at ascending">Oldest</option>
     </select>
   );
+};
+
+SortItems.propTypes = {
+  alterSort: PropTypes.func,
+  category: PropTypes.string
 };
 export default SortItems;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
 import '../css/LoginBar.css';
+import PropTypes from 'prop-types';
 
 class LoginBar extends Component {
   state = {
@@ -63,4 +64,8 @@ class LoginBar extends Component {
   };
 }
 
+LoginBar.propTypes = {
+  user: PropTypes.object,
+  loginError: PropTypes.bool
+};
 export default LoginBar;

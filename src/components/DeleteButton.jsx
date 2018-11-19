@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const DeleteButton = ({ user, item, handleDelete, category }) => {
   return (
@@ -16,4 +17,10 @@ const DeleteButton = ({ user, item, handleDelete, category }) => {
   );
 };
 
+DeleteButton.propTypes = {
+  user: PropTypes.object,
+  item: PropTypes.object,
+  handleDelete: PropTypes.func,
+  category: PropTypes.string
+};
 export default DeleteButton;

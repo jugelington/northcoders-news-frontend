@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import * as api from '../api';
 import '../css/PostArticle.css';
+import PropTypes from 'prop-types';
 
-class Write extends Component {
+class PostArticle extends Component {
   state = {
     title: '',
     body: '',
@@ -54,8 +55,6 @@ class Write extends Component {
 
   handleChange = event => {
     const { value, id } = event.target;
-    console.log(value);
-
     this.setState({ [id]: value });
   };
 
@@ -81,4 +80,6 @@ class Write extends Component {
   };
 }
 
-export default Write;
+PostArticle.propTypes = { user: PropTypes.object };
+
+export default PostArticle;

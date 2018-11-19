@@ -4,6 +4,7 @@ import Vote from './Vote';
 import moment from 'moment';
 import UserDisplay from './UserDisplay';
 import DeleteButton from './DeleteButton';
+import PropTypes from 'prop-types';
 
 const ArticleSummary = ({
   article,
@@ -51,4 +52,11 @@ const ArticleSummary = ({
   );
 };
 
+ArticleSummary.propTypes = {
+  article: PropTypes.object,
+  frontPage: PropTypes.bool,
+  profilePage: PropTypes.bool,
+  user: PropTypes.object,
+  handleDelete: PropTypes.func
+};
 export default ArticleSummary;

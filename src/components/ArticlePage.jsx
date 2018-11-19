@@ -4,6 +4,7 @@ import '../css/ArticlePage.css';
 import Comments from './Comments';
 import Loading from './Loading';
 import ArticleSummary from './ArticleSummary';
+import PropTypes from 'prop-types';
 
 class ArticlePage extends Component {
   state = {
@@ -66,5 +67,10 @@ class ArticlePage extends Component {
       .then(() => this.props.navigate('/'));
   };
 }
+
+ArticlePage.propTypes = {
+  user: PropTypes.object,
+  article_id: PropTypes.string
+};
 
 export default ArticlePage;
