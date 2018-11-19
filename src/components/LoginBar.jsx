@@ -6,16 +6,20 @@ class LoginBar extends Component {
   state = {
     username: 'jessjelly'
   };
+
   render() {
-    return this.props.user !== null ? (
-      <Link to={`/users/${this.props.user.username}`}>
+    const { user, loginError } = this.props;
+    const { username } = this.state;
+
+    return user !== null ? (
+      <Link to={`/users/${user.username}`}>
         <div className="user-bar">
           <img
-            src={this.props.user.avatar_url}
+            src={user.avatar_url}
             alt="my profile"
             className="login-avatar"
           />
-          <p>{this.props.user.name}</p>
+          <p>{user.name}</p>
         </div>{' '}
       </Link>
     ) : (
@@ -23,7 +27,7 @@ class LoginBar extends Component {
         <form className="login-bar" onSubmit={this.handleSubmit}>
           <label htmlFor="username">
             {' '}
-            {!this.props.loginError ? (
+            {!loginError ? (
               <p> Hi there! Who are you?</p>
             ) : (
               <p>
@@ -36,7 +40,7 @@ class LoginBar extends Component {
             id="username"
             type="text"
             onChange={this.handleChange}
-            value={this.state.username}
+            value={username}
           />
           <br />
           <button>Log in</button>
@@ -52,8 +56,10 @@ class LoginBar extends Component {
   };
 
   handleSubmit = event => {
+    const { username } = this.state;
+    const { login } = this.props;
     event.preventDefault();
-    this.props.login(this.state.username);
+    login(username);
   };
 }
 

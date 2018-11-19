@@ -21,34 +21,46 @@ class Profile extends Component {
   };
 
   render() {
+    const {
+      user,
+      articleLoading,
+      commentLoading,
+      articlesError,
+      commentsError,
+      hideArticles,
+      hideComments,
+      articles,
+      comments
+    } = this.state;
+
     return (
       <main>
         <h1>Profile</h1>
         <section className="avatar-holder">
-          <h2>{this.state.user.name}</h2>
-          <h2>({this.state.user.username})</h2>
-          <img src={this.state.user.avatar_url} alt="avatar" />
+          <h2>{user.name}</h2>
+          <h2>({user.username})</h2>
+          <img src={user.avatar_url} alt="avatar" />
         </section>
-        {this.state.articlesError ? (
+        {articlesError ? (
           'No Articles Found'
-        ) : this.state.articleLoading === false ? (
+        ) : articleLoading === false ? (
           <>
             <h3>Articles posted:</h3>
             <p>
-              Articles Posted: {this.state.articles.length} <br />
+              Articles Posted: {articles.length} <br />
               Total Votes:{' '}
-              {this.state.articles.reduce((acc, curr) => {
+              {articles.reduce((acc, curr) => {
                 return acc + curr.votes;
               }, 0)}
             </p>
             <button value="articles" onClick={this.show}>
               Show Articles
             </button>
-            {this.state.hideArticles !== true && (
+            {hideArticles !== true && (
               <>
                 <br />
                 <SortItems alterSort={this.alterSort} category="articles" />
-                {this.state.articles.map(article => (
+                {articles.map(article => (
                   <ArticleSummary
                     key={article._id}
                     article={article}
@@ -64,26 +76,26 @@ class Profile extends Component {
         ) : (
           <Loading />
         )}
-        {this.state.commentsError ? (
+        {commentsError ? (
           'Comments not found'
-        ) : this.state.commentLoading === false ? (
+        ) : commentLoading === false ? (
           <>
             <h3>Comments posted:</h3>
             <p>
-              Comments Posted: {this.state.comments.length} <br />
+              Comments Posted: {comments.length} <br />
               Total Votes:{' '}
-              {this.state.comments.reduce((acc, curr) => {
+              {comments.reduce((acc, curr) => {
                 return acc + curr.votes;
               }, 0)}
             </p>
             <button value="comments" onClick={this.show}>
               Show Comments
             </button>
-            {this.state.hideComments !== true && (
+            {hideComments !== true && (
               <>
                 <br />
                 <SortItems alterSort={this.alterSort} category="comments" />
-                {this.state.comments.map(comment => (
+                {comments.map(comment => (
                   <CommentSummary
                     key={comment._id}
                     comment={comment}
@@ -103,7 +115,8 @@ class Profile extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    this.props.username !== prevProps.username && this.getUserInfo();
+    const { username } = this.props;
+    username !== prevProps.username && this.getUserInfo();
   }
 
   componentDidMount() {
@@ -111,12 +124,14 @@ class Profile extends Component {
   }
 
   getUserInfo = () => {
+    const { username } = this.props;
     api
-      .fetchUser(this.props.username)
-      .then(user => this.setState({ user }))
+      .fetchUser(username)
+      .then(foundUser => this.setState({ user: foundUser }))
       .then(() => {
+        const { user } = this.state;
         api
-          .fetchUserSubmissions(this.state.user._id, 'articles')
+          .fetchUserSubmissions(user._id, 'articles')
           .then(articles => {
             this.setState({
               articles: articles,
@@ -126,7 +141,7 @@ class Profile extends Component {
           })
           .catch(this.setState({ articlesError: true }));
         api
-          .fetchUserSubmissions(this.state.user._id, 'comments')
+          .fetchUserSubmissions(user._id, 'comments')
           .then(comments =>
             this.setState({
               comments,
@@ -160,13 +175,16 @@ class Profile extends Component {
         });
   };
 
-  handleDelete = event => {
+  handleDelete = ({
+    event: {
+      target: { value }
+    }
+  }) => {
+    const { articles } = this.state;
     this.setState({
-      articles: this.state.articles.filter(
-        article => article._id !== event.target.value
-      )
+      articles: articles.filter(article => article._id !== value)
     });
-    api.deleteItem('articles', event.target.value);
+    api.deleteItem('articles', value);
   };
 }
 

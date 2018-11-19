@@ -9,7 +9,7 @@ import write from '../images/write.png';
 import users from '../images/users.png';
 import logoutImage from '../images/logoutImage.png';
 
-const Nav = ({ user, logout }) => {
+const Nav = ({ logout }) => {
   return (
     <nav>
       <Link to="/">

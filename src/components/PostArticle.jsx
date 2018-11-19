@@ -11,6 +11,8 @@ class Write extends Component {
   };
 
   render() {
+    const { title, body, error } = this.state;
+
     return (
       <main>
         <h1>Write Article</h1>
@@ -20,7 +22,7 @@ class Write extends Component {
           <input
             id="title"
             type="text"
-            value={this.state.title}
+            value={title}
             onChange={this.handleChange}
           />
           <br />
@@ -32,15 +34,10 @@ class Write extends Component {
             <option value="cooking">Cooking</option>
           </select>
           <br />
-          Body:{' '}
-          <textarea
-            value={this.state.body}
-            onChange={this.handleChange}
-            id="body"
-          />
+          Body: <textarea value={body} onChange={this.handleChange} id="body" />
           <br />
           <button>Submit</button>
-          {this.state.error && (
+          {error && (
             <>
               <br />
               <p>
@@ -63,16 +60,17 @@ class Write extends Component {
   };
 
   handleSubmit = event => {
+    const { title, body, belongs_to, user } = this.state;
     event.preventDefault();
     const article = {
-      title: this.state.title,
-      body: this.state.body,
-      belongs_to: this.state.belongs_to,
-      created_by: this.props.user._id
+      title: title,
+      body: body,
+      belongs_to: belongs_to,
+      created_by: user._id
     };
 
     api
-      .postArticle(article, this.state.belongs_to)
+      .postArticle(article, belongs_to)
       .then(
         res =>
           this.props.navigate(`/articles/${res.newArticle._id}`) &&
