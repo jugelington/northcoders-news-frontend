@@ -11,7 +11,7 @@ const CommentSummary = ({ comment, user, handleDelete, profilePage }) => {
       <p className="comment-body">{comment.body}</p>
       {moment(comment.created_at).format('MMMM DD YYYY')}
       <div className="comment-votes">
-        {!profilePage ? (
+        {!profilePage && comment._id !== 'newComment' ? (
           <Vote
             id="comment"
             votes={comment.votes}
@@ -34,13 +34,17 @@ const CommentSummary = ({ comment, user, handleDelete, profilePage }) => {
               <button>Go To</button>
             </Link>
           )
+        : comment._id === 'newComment'
+        ? null
         : 'Article Deleted'}
-      <DeleteButton
-        handleDelete={handleDelete}
-        user={user}
-        item={comment}
-        category="comments"
-      />
+      {comment._id !== 'newComment' && (
+        <DeleteButton
+          handleDelete={handleDelete}
+          user={user}
+          item={comment}
+          category="comments"
+        />
+      )}
     </div>
   );
 };

@@ -45,7 +45,7 @@ class CommentForm extends Component {
     api.postComment(newComment, articleId).catch(() => {
       this.setState({ error: true });
     });
-    this.state.body !== '' && handleCommentPost(newComment);
+    body !== '' && handleCommentPost(newComment);
     this.setState({ body: '', error: false });
   };
 
