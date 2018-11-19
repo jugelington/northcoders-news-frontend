@@ -24,7 +24,7 @@ class Comments extends Component {
           articleId={article}
           handleCommentPost={this.handleCommentPost}
         />
-        {commentsError === true ? (
+        {commentsError || comments.length < 1 ? (
           <>
             <br />
             Be the first to comment!

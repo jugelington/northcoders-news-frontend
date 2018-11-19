@@ -60,7 +60,8 @@ class Write extends Component {
   };
 
   handleSubmit = event => {
-    const { title, body, belongs_to, user } = this.state;
+    const { title, body, belongs_to } = this.state;
+    const { user } = this.props;
     event.preventDefault();
     const article = {
       title: title,
