@@ -23,26 +23,20 @@ const ArticleSummary = ({
           </Link>
         )}
       </p>
-      <p className="article-foot">
-        {moment(article.created_at).format('MMMM DD YYYY')}
-        <br />
-        {!frontPage
-          ? null
-          : article.comment_count
-          ? `${article.comment_count} comments`
-          : `0 Comments`}
-        <div className="article-votes">
-          {!profilePage ? (
-            <Vote
-              votes={article.votes}
-              _id={article._id}
-              section={'articles'}
-            />
-          ) : (
-            `Votes: ${article.votes}`
-          )}
-        </div>{' '}
-      </p>
+      {moment(article.created_at).format('MMMM DD YYYY')}
+      <br />
+      {!frontPage
+        ? null
+        : article.comment_count
+        ? `${article.comment_count} comments`
+        : `0 Comments`}
+      <div className="article-votes">
+        {!profilePage ? (
+          <Vote votes={article.votes} _id={article._id} section={'articles'} />
+        ) : (
+          `Votes: ${article.votes}`
+        )}
+      </div>{' '}
       {!profilePage && (
         <UserDisplay
           username={article.created_by.username}
