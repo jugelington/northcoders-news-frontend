@@ -5,43 +5,46 @@ import { Link } from '@reach/router';
 import '../css/Users.css';
 
 class UserSummary extends Component {
-  state = {};
+  state = { articles: [], comments: [] };
   render() {
-    return !this.state.articles || !this.state.comments ? (
+    const { articles, comments, name, username, avatar_url } = this.state;
+    return !articles || !comments ? (
       <Loading />
     ) : (
       <section className="users-box">
         <h3>
-          {this.state.name} <br />({this.state.username})
+          {name} <br />({username})
         </h3>
-        <img src={this.state.avatar_url} alt="avatar" />
+        <img src={avatar_url} alt="avatar" />
         <br />
-        <Link className="links" to={`/users/${this.state.username}`}>
+        <Link className="links" to={`/users/${username}`}>
           <button>Profile</button>
         </Link>
         <h4>Articles</h4>
-        Total Written: {this.state.articles.length} <br />
+        Total Written: {articles.length} <br />
         Total Popularity:{' '}
-        {this.state.articles.reduce((acc, curr) => (acc += curr.votes), 0)}
+        {articles.reduce((acc, curr) => (acc += curr.votes), 0)}
         <h4>Comments</h4>
-        Total written: {this.state.comments.length} <br />
+        Total written: {comments.length} <br />
         Total Popularity:{' '}
-        {this.state.comments.reduce((acc, curr) => (acc += curr.votes), 0)}
+        {comments.reduce((acc, curr) => (acc += curr.votes), 0)}
       </section>
     );
   }
 
   componentDidMount() {
-    this.setState(this.props.user);
+    const { user } = this.props;
+    this.setState(user);
     this.formatUser();
   }
 
   formatUser = async () => {
+    const { user } = this.props;
     api
-      .fetchUserSubmissions(this.props.user._id, 'articles')
+      .fetchUserSubmissions(user._id, 'articles')
       .then(articles => this.setState({ articles }));
     api
-      .fetchUserSubmissions(this.props.user._id, 'comments')
+      .fetchUserSubmissions(user._id, 'comments')
       .then(comments => this.setState({ comments }));
   };
 }

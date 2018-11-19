@@ -10,15 +10,16 @@ class Users extends Component {
     loading: true
   };
   render() {
+    const { loading, users } = this.state;
     return (
       <main>
         <h1>Users</h1>
-        {this.state.loading ? (
+        {loading ? (
           <Loading />
         ) : (
           <>
             <section className="users-container">
-              {this.state.users.map(user => (
+              {users.map(user => (
                 <UserSummary user={user} key={user._id} />
               ))}
             </section>
