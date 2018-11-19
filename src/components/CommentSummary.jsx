@@ -34,9 +34,7 @@ const CommentSummary = ({ comment, user, handleDelete, profilePage }) => {
               <button>Go To</button>
             </Link>
           )
-        : comment._id === 'newComment'
-        ? null
-        : 'Article Deleted'}
+        : comment._id === 'newComment' || 'Article Deleted'}
       {comment._id !== 'newComment' && (
         <DeleteButton
           handleDelete={handleDelete}
