@@ -21,42 +21,25 @@ class App extends Component {
   };
 
   render() {
+    const { loggedIn, user, loginError } = this.state;
     return (
       <div className="App">
         <LoginBar
           login={this.login}
-          loggedIn={this.state.loggedIn}
-          user={this.state.user ? this.state.user : null}
-          loginError={this.state.loginError}
+          loggedIn={loggedIn}
+          user={user ? user : null}
+          loginError={loginError}
         />
         <Header />
 
-        <Auth user={this.state.user}>
-          <Nav
-            user={this.state.user ? this.state.user : null}
-            logout={this.logout}
-          />
+        <Auth user={user}>
+          <Nav user={user} logout={this.logout} />
           <Router>
-            <Articles
-              path="/"
-              user={this.state.user ? this.state.user : null}
-            />
-            <Articles
-              path="/topics/:topic_slug"
-              user={this.state.user ? this.state.user : null}
-            />
-            <ArticlePage
-              path="/articles/:article_id"
-              user={this.state.user ? this.state.user : null}
-            />
-            <Profile
-              path="/users/:username"
-              user={this.state.user ? this.state.user : null}
-            />
-            <PostArticle
-              path="/postarticle"
-              user={this.state.user ? this.state.user : null}
-            />
+            <Articles path="/" user={user} />
+            <Articles path="/topics/:topic_slug" user={user} />
+            <ArticlePage path="/articles/:article_id" user={user} />
+            <Profile path="/users/:username" user={user} />
+            <PostArticle path="/postarticle" user={user} />
             <Users path="/users" />
             <Error path="/error" />
           </Router>
