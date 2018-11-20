@@ -11,7 +11,8 @@ const ArticleSummary = ({
   frontPage,
   profilePage,
   user,
-  handleDelete
+  handleDelete,
+  articlePage
 }) => {
   return (
     <div className="article">
@@ -27,13 +28,13 @@ const ArticleSummary = ({
       {moment(article.created_at).format('MMMM DD YYYY')}
       <br />
       {!frontPage || article.comment_count
-        ? `${article.comment_count} comments`
+        ? !articlePage && `${article.comment_count} comments`
         : `0 Comments`}
       <div className="article-votes">
         {!profilePage ? (
           <Vote votes={article.votes} _id={article._id} section={'articles'} />
         ) : (
-          `Votes: ${article.votes}`
+          `${article.votes} votes`
         )}
       </div>{' '}
       {!profilePage && (

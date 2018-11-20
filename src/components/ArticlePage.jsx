@@ -22,6 +22,7 @@ class ArticlePage extends Component {
             article={article}
             user={this.props.user}
             handleDelete={this.handleDelete}
+            articlePage={true}
           />
         ) : (
           <Loading />
